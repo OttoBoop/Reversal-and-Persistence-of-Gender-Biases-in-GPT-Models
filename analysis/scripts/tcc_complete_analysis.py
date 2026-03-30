@@ -16,14 +16,16 @@ Este script gera:
 
 Uso:
     python tcc_complete_analysis.py
+    python tcc_complete_analysis.py --input-dir ../../data/raw --output-dir ../generated
 
 Requer:
     - pandas
-    - numpy  
+    - numpy
     - matplotlib
     - scipy
 """
 
+import argparse
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -37,8 +39,18 @@ import shutil
 # ============================================
 
 # Diretórios
-INPUT_DIR = '/mnt/user-data/uploads/'
-OUTPUT_DIR = '/mnt/user-data/outputs/'
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..', '..'))
+DEFAULT_INPUT_DIR = os.path.join(REPO_ROOT, 'data', 'raw')
+DEFAULT_OUTPUT_DIR = os.path.join(REPO_ROOT, 'analysis', 'generated')
+
+
+def normalize_dir(path: str) -> str:
+    return os.path.join(os.path.abspath(path), '')
+
+
+INPUT_DIR = normalize_dir(os.environ.get('TCC_INPUT_DIR', DEFAULT_INPUT_DIR))
+OUTPUT_DIR = normalize_dir(os.environ.get('TCC_OUTPUT_DIR', DEFAULT_OUTPUT_DIR))
 
 # Criar diretório de saída se não existir
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -113,6 +125,30 @@ def load_data() -> Dict[str, pd.DataFrame]:
             print(f"✗ {key}: arquivo não encontrado ({filepath})")
             data[key] = None
     return data
+
+
+def configure_paths(input_dir: str, output_dir: str):
+    global INPUT_DIR, OUTPUT_DIR
+    INPUT_DIR = normalize_dir(input_dir)
+    OUTPUT_DIR = normalize_dir(output_dir)
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description='Gera os gráficos e tabelas do paper a partir dos CSVs em data/raw.'
+    )
+    parser.add_argument(
+        '--input-dir',
+        default=os.environ.get('TCC_INPUT_DIR', DEFAULT_INPUT_DIR),
+        help='Diretório com os CSVs de entrada. Padrão: data/raw do repositório.',
+    )
+    parser.add_argument(
+        '--output-dir',
+        default=os.environ.get('TCC_OUTPUT_DIR', DEFAULT_OUTPUT_DIR),
+        help='Diretório para os artefatos gerados. Padrão: analysis/generated do repositório.',
+    )
+    return parser.parse_args()
 
 
 def add_family_column(df: pd.DataFrame) -> pd.DataFrame:
@@ -813,6 +849,9 @@ def create_summary():
 # ============================================
 
 def main():
+    args = parse_args()
+    configure_paths(args.input_dir, args.output_dir)
+
     print("\n" + "="*60)
     print("TCC ANALYSIS - VIÉS DE GÊNERO EM LLMs")
     print("="*60)

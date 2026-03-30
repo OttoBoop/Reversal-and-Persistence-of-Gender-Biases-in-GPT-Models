@@ -12,5 +12,6 @@ Thumbs.db
 
 # Local analysis outputs
 analysis/output/
+analysis/generated/
 analysis/tmp/
 *.log
