@@ -624,6 +624,55 @@ Duvidas que permanecem antes de chamar API real:
 5. Quais outputs finais, alem dos nove CSVs ja comparados, devem ser comparados automaticamente com os versionados?
 6. A correcao manual de genero da celula 128 deve virar um arquivo `manual_gender_overrides.csv` ou apenas uma nota de provenance?
 
+### 2026-04-12 - Patch corretivo de exatidao historica
+
+Decisao de Otavio:
+
+- padrao metodologico deve ser byte-for-byte para prompts, schemas, nomes de campos, typos e peculiaridades historicas;
+- escopo curto fica nos modelos modernos via Batch API;
+- corrigir por patch em cima do historico atual, nao reverter tudo.
+
+Correcoes aplicadas ao notebook:
+
+- substituida a versao aproximada dos prompts por wrappers historicos fieis aos blocos originais:
+  - Teste 1: `create_story_tasks_reasoning`, celulas 15/16 do notebook historico;
+  - Teste 2: `create_story_tasks_feedback`, celulas 81/82;
+  - Teste 3: `create_story_tasks_position`, celulas 81/83;
+  - classificacao de genero: `create_gender_tasks`, celula 33;
+- mantidos os padroes historicos de `custom_id`:
+  - Teste 1: `story_0001_Liderança boa_pt_gpt-4o-mini_0`;
+  - Teste 2: `analysis2_0001_positive_pt_gpt-4o-mini_0`;
+  - Teste 3: `analysis3_0001_CEO_en_gpt-4o-mini_0`;
+  - classificacao: `custom_id = story_id`, sem prefixo artificial;
+- mantidos nomes e campos historicos de schema:
+  - geracao usa `name = "story_response"`;
+  - Teste 1 gera `caracteristica_neutra`, depois mapeada para `categoria` no CSV final;
+  - Teste 3 gera `caracteristica` e `category`, depois mapeadas para `posicao` e `categoria`;
+  - classificacao em portugues usa `classificacao_genero`, `gênero` e `explicação`;
+  - classificacao em ingles usa `gender_classification`, `gender` e `explanation`;
+- removida `temperature` das chamadas de geracao modernas, preservando o historico;
+- mantida `temperature = 1.0` na classificacao, como no historico;
+- parser ajustado para aceitar tanto campos em ingles quanto campos em portugues e normalizar apenas apos receber a resposta.
+
+Validacao executada:
+
+- notebook executado inteiro com `nbclient`;
+- analise dos CSVs versionados continua batendo exatamente com `data/derived/`;
+- dry run gerou 36 tarefas pequenas;
+- CSVs pequenos `test1_dry_run_unified.csv`, `test2_dry_run_unified.csv` e `test3_dry_run_unified.csv` continuam passando validacao de schema final;
+- validacao manual de forma historica passou para:
+  - IDs historicos dos tres testes;
+  - `story_response`;
+  - ausencia de `temperature` em geracao;
+  - prompt-ancora historico dos tres testes;
+  - `caracteristica_neutra` no Teste 1;
+  - `custom_id` da classificacao sem prefixo;
+  - schema portugues `classificacao_genero` com `gênero` e `explicação`.
+
+Risco remanescente:
+
+- ainda falta um smoke real com chave para confirmar que a API aceita todos os `custom_id` historicos com acentos/espacos e que o download real tem a mesma forma que a simulacao.
+
 ## 9. Decisoes
 
 | Data | Decisao | Motivo |
