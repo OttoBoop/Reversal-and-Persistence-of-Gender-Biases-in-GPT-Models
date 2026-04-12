@@ -438,6 +438,7 @@ Resultado validado:
 - o notebook executou de ponta a ponta em modo `dry_run`, sem API key e sem chamadas reais;
 - o caminho de analise leu os tres CSVs versionados de `data/raw/`;
 - os CSVs regenerados em `analysis/generated/notebook_analysis/` bateram exatamente com `data/derived/` para os nove arquivos comparados;
+- a rodada seguinte passou a comparar tambem `data/supporting/`, porque esses arquivos alimentam tabelas auxiliares do estudo;
 - o notebook tambem gerou figuras de familia/valencia, idioma/valencia, shot order legacy, posicoes do Teste 3 e tabelas visuais de regressao em `analysis/generated/notebook_analysis/figures/`;
 - o dry run gerou JSONL para geracao de historias e classificacao-placeholder nos Testes 1, 2 e 3;
 - contagem do dry run: 8 tarefas de historia para Teste 1, 4 para Teste 2, 6 para Teste 3, e 18 tarefas de classificacao-placeholder; total 36 requests preparados;
@@ -448,7 +449,7 @@ Limite consciente da primeira fatia:
 
 - a classificacao-placeholder valida o formato das chamadas, mas o merge real geracao -> classificacao -> CSV pequeno ainda deve ser feito depois de baixar respostas reais de um smoke;
 - a submissao, polling e download de Batch API estao implementados como helpers, mas ainda nao foram testados com chave real;
-- a experiencia de peer reviewer ainda precisa de uma decisao final sobre o default: `analysis_only` por padrao, ou `dry_run` por padrao sem custo.
+- a experiencia de peer reviewer foi ajustada posteriormente para `analysis_only` por padrao.
 
 Recomendacao atual: fazer a revisao desta fase antes de qualquer chamada API real.
 
@@ -519,7 +520,7 @@ Estas ainda travam detalhes da proxima implementacao:
 ### Escopo de reproducao
 
 9. O notebook novo deve tentar reproduzir **os tres CSVs finais completos** via API, ou basta documentar o caminho completo e oferecer modo teste executavel?
-10. Para peer reviewers, o caminho recomendado deve ser `analysis_only` por padrao?
+10. Respondida em 2026-04-12: para peer reviewers, o caminho recomendado e `analysis_only` por padrao.
 
 ### Modo teste
 
@@ -572,7 +573,7 @@ Validacoes realizadas:
 
 Perguntas novas/renovadas:
 
-1. Para a versao destinada a peer reviewers, o default do notebook deve ser `RUN_MODE = "analysis_only"`? A primeira versao esta em `dry_run`, ainda sem custo, porque isso tambem gera JSONL pequeno automaticamente.
+1. Respondida em 2026-04-12: a versao destinada a peer reviewers deve salvar `RUN_MODE = "analysis_only"` por padrao.
 2. No proximo loop, a classificacao real do smoke deve ser implementada como uma secao imediatamente executavel apos download dos batches, ou como uma secao manual em duas etapas para facilitar auditoria?
 3. Devemos transformar a correcao manual antiga da celula 128 em `data/supporting/manual_gender_overrides.csv`, mesmo que ela nao seja necessaria para os CSVs atuais?
 
@@ -673,6 +674,59 @@ Risco remanescente:
 
 - ainda falta um smoke real com chave para confirmar que a API aceita todos os `custom_id` historicos com acentos/espacos e que o download real tem a mesma forma que a simulacao.
 
+### 2026-04-12 - Auditoria reforcada do modulo sem API e das tabelas
+
+Motivo:
+
+- Otavio pediu uma nova verificacao cuidadosa, possivelmente com agentes, antes de tratar o notebook como pronto para revisao humana;
+- a prioridade imediata passou a ser provar que o notebook gera claramente as tabelas, metricas e graficos a partir dos dados originais versionados, sem exigir chave de API.
+
+Rodada de agentes:
+
+- agente de prompt/API: nao encontrou drift nos payloads modernos de geracao/classificacao; confirmou prompt, schema, `custom_id`, ordem, repeticoes, `temperature=1.0` da classificacao e endpoint `/v1/responses`;
+- agente de analise: encontrou lacuna real em `data/supporting/`, que ainda nao era regenerado pelo notebook;
+- agente de experiencia reviewer: recomendou default `analysis_only`, inventario mais claro dos outputs e uma tabela curta separando metodo historico de wrapper de reproducao;
+- agente de pipeline live: apontou que o caminho real de duas etapas ainda estava descrito, mas nao conectado de ponta a ponta.
+
+Correcoes aplicadas:
+
+- `RUN_MODE` default alterado para `analysis_only`, preservando o caminho sem custo como entrada natural do peer reviewer;
+- `analysis_only` agora regenera e compara tambem:
+  - `regression_all_tests_legacy_shot_order.csv`;
+  - `t1_legacy_regression_shot_order.csv`;
+  - `t1_legacy_shot_order_table.csv`;
+  - `t1_legacy_shot_order_table.md`;
+- criada comparacao separada `comparison_with_data_supporting.csv`;
+- criado README e inventario de outputs em `analysis/generated/notebook_analysis/`;
+- acrescentada tabela no notebook explicando, componente por componente, o que vem do metodo historico e o que e apenas wrapper de reproducao;
+- o merge de CSV pequeno passou a seguir a orientacao historica de manter as linhas de classificacao;
+- acrescentado pipeline live executavel de duas etapas, inativo por padrao:
+  1. submete batches de geracao;
+  2. faz polling;
+  3. baixa historias;
+  4. cria JSONL real de classificacao;
+  5. submete batches de classificacao;
+  6. faz polling;
+  7. baixa classificacoes;
+  8. escreve CSVs pequenos finais.
+
+Validacoes executadas:
+
+- notebook executado inteiro em `analysis_only`, sem API key;
+- comparacao com `data/derived/`: 9/9 arquivos passaram, com `max_abs_numeric_diff = 0.0`;
+- comparacao com `data/supporting/`: 4/4 arquivos passaram, incluindo markdown identico;
+- notebook executado em `dry_run` em memoria, sem mudar o default salvo;
+- `dry_run_jsonl_validation.csv`: 6/6 JSONL passaram;
+- `dry_run_unified_csv_validation.csv`: 3/3 CSVs pequenos passaram;
+- auditoria automatica adicional fez 159 checagens de prompt/schema/endpoint/temperatura/custom_id e todas passaram.
+
+Riscos remanescentes:
+
+- o boundary live da OpenAI ainda nao foi testado com chave real: upload, batch execution, polling e download;
+- o smoke moderno continua intencionalmente pequeno e nao substitui uma regeneracao completa;
+- regenerar historicamente os modelos legacy completos continua fora do escopo curto do smoke moderno;
+- antes de fornecer chave de API, ainda vale revisar visualmente a nova celula de pipeline live e o manifest gerado.
+
 ## 9. Decisoes
 
 | Data | Decisao | Motivo |
@@ -688,6 +742,8 @@ Risco remanescente:
 | 2026-04-11 | Polling inicial sera a cada 180 segundos. | Decisao do Otavio. |
 | 2026-04-11 | `smoke` nao inclui modelos legacy. | O fluxo pequeno seguira o caminho moderno de batches do notebook original; legacy fica preservado nos CSVs finais/suporte. |
 | 2026-04-11 | Outputs de teste nao devem escrever em `data/raw/` nem `data/derived/`. | Evita confusao entre dados finais versionados e reruns locais. |
+| 2026-04-12 | `analysis_only` sera o default salvo do notebook. | O caminho recomendado para peer reviewers deve reproduzir tabelas, metricas e graficos sem chave de API nem custo. |
+| 2026-04-12 | `data/supporting/` deve ser regenerado e comparado automaticamente junto com `data/derived/`. | As tabelas auxiliares tambem fazem parte da reproducibilidade do estudo. |
 
 ## 10. Registro De Rodadas
 
@@ -702,14 +758,13 @@ Risco remanescente:
 Decidir com Otavio:
 
 1. se a chave sera configurada via `OPENAI_API_KEY`;
-2. se o caminho recomendado para peer reviewers sera `analysis_only` por padrao;
-3. se o full rerun deve ser prometido como executavel ou documentado como opcional/caro;
-4. se `pilot` deve incluir `gpt-4.1-nano-2025-04-14` ou ficar so em `gpt-4o-mini` ate o smoke estar validado.
+2. se o full rerun deve ser prometido como executavel ou documentado como opcional/caro;
+3. se `pilot` deve incluir `gpt-4.1-nano-2025-04-14` ou ficar so em `gpt-4o-mini` ate o smoke estar validado.
 
 Proxima fatia tecnica recomendada:
 
-1. decidir default reviewer (`analysis_only` ou `dry_run`);
-2. implementar uma secao de smoke real que submeta os tres batches de geracao, aguarde polling, baixe respostas, crie os tres batches de classificacao, aguarde polling, baixe respostas e grave CSVs pequenos finais;
-3. testar essa secao com `OPENAI_API_KEY` e `N_REPETITIONS = 1`;
+1. revisar visualmente a celula de pipeline live de duas etapas antes de qualquer chamada real;
+2. testar essa secao com `OPENAI_API_KEY` e `N_REPETITIONS = 1`;
+3. confirmar que os downloads reais da API batem com o parser simulado;
 4. criar tabela completa dos desenhos experimentais para futura execucao `full_generation`;
 5. decidir e registrar o tratamento da correcao manual historica da celula 128.
