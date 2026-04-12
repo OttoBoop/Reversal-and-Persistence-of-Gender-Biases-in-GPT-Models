@@ -447,8 +447,8 @@ Resultado validado:
 
 Limite consciente da primeira fatia:
 
-- a classificacao-placeholder valida o formato das chamadas, mas o merge real geracao -> classificacao -> CSV pequeno ainda deve ser feito depois de baixar respostas reais de um smoke;
-- a submissao, polling e download de Batch API estao implementados como helpers, mas ainda nao foram testados com chave real;
+- a classificacao-placeholder validava o formato das chamadas; este limite foi superado pelo smoke real `20260412_133942`, que baixou respostas reais e montou CSVs pequenos;
+- a submissao, polling e download de Batch API estavam implementados como helpers; foram testados com chave real no smoke `20260412_133942`;
 - a experiencia de peer reviewer foi ajustada posteriormente para `analysis_only` por padrao.
 
 Recomendacao atual: fazer a revisao desta fase antes de qualquer chamada API real.
@@ -616,9 +616,9 @@ Validacao nova:
   - Teste 3: 6 linhas;
 - todos os tres CSVs pequenos possuem exatamente as colunas finais documentadas.
 
-Duvidas que permanecem antes de chamar API real:
+Duvidas registradas antes do primeiro smoke real:
 
-1. O boundary live da OpenAI ainda nao foi testado: upload do arquivo, execucao do batch, polling real e download real.
+1. Respondida em 2026-04-12: o boundary live da OpenAI foi testado em smoke pequeno com upload, execucao de batch, polling e download real.
 2. A amostra `smoke` cobre apenas 2 categorias do Teste 1 e 6 posicoes do Teste 3; isso e bom para custo, mas nao prova o desenho completo.
 3. A reproducao completa ainda precisa de uma tabela final de desenhos experimentais completos, nao apenas das amostras de smoke.
 4. Ainda falta decidir se a correcao manual historica da celula 128 vira arquivo de provenance.
@@ -672,7 +672,7 @@ Validacao executada:
 
 Risco remanescente:
 
-- ainda falta um smoke real com chave para confirmar que a API aceita todos os `custom_id` historicos com acentos/espacos e que o download real tem a mesma forma que a simulacao.
+- superado em 2026-04-12 pelo smoke real `20260412_133942`: a API aceitou os `custom_id` historicos da amostra, incluindo acentos/espacos, e o download real foi parseado pelo mesmo caminho da simulacao.
 
 ### 2026-04-12 - Auditoria reforcada do modulo sem API e das tabelas
 
@@ -722,10 +722,10 @@ Validacoes executadas:
 
 Riscos remanescentes:
 
-- o boundary live da OpenAI ainda nao foi testado com chave real: upload, batch execution, polling e download;
+- o boundary live da OpenAI foi testado em smoke pequeno com chave real; ainda falta decidir se faremos `pilot` maior;
 - o smoke moderno continua intencionalmente pequeno e nao substitui uma regeneracao completa;
 - regenerar historicamente os modelos legacy completos continua fora do escopo curto do smoke moderno;
-- antes de fornecer chave de API, ainda vale revisar visualmente a nova celula de pipeline live e o manifest gerado.
+- a chave usada no smoke foi exposta na conversa e deve ser revogada/rotacionada.
 
 ### 2026-04-12 - Auditoria LaTeX das tabelas e resultados
 
@@ -780,13 +780,63 @@ Excecao documentada:
 - ha uma divergencia nao substantiva no `t` do intercepto da regressao `appendix_t1_chat_simple`;
 - o LaTeX reporta `t = 177.92`, enquanto `statsmodels` em precisao completa gera `t = 178.68` e a razao entre coeficiente/EP exibidos gera `t = 176.88`;
 - coeficiente, EP, N, R2, p-valor e a linha substantiva `is_positive` dessa mesma regressao batem;
+- investigacao adicional indica que o valor `177.92` ja entrou no pacote LaTeX original importado em `1001fe6`; ele nao e explicado por versao de `statsmodels`, convencao de inconclusivos, filtro de amostra atual, erro padrao robusto, nem por uma especificacao plausivel com controles que preserve `N`, coeficiente, EP e `R2`;
+- a explicacao mais provavel e um `t` obsoleto/manual vindo de uma tabela intermediaria: ele equivale aproximadamente a manter os coeficientes atuais, mas inflar o EP do intercepto como se a amostra efetiva/graus de liberdade fossem um pouco menores;
 - a auditoria marca essa diferenca como excecao documentada em `latex_numeric_checks.csv` e `latex_audit_notes.md`, nao como falha silenciosa.
 
 Riscos remanescentes:
 
 - esta auditoria cobre tabelas numericas, regresses e sintese do paper/apendice em ingles; ela nao faz comparacao byte-a-byte das imagens `image1` a `image10`;
 - tambem nao bloqueia a versao portuguesa do LaTeX;
-- a regeneracao live via OpenAI API continua sem smoke real.
+- a regeneracao live via OpenAI API foi validada apenas em smoke pequeno; ainda nao ha `pilot` nem `full_generation` real.
+
+### 2026-04-12 - Smoke real com Batch API
+
+Motivo:
+
+- Otavio forneceu uma chave para testar a fronteira real da API;
+- o objetivo era provar o caminho `JSONL -> Batch API -> polling -> download -> classificacao -> CSV pequeno`, sem salvar a chave e sem alterar o notebook salvo em `analysis_only`.
+
+Configuracao executada:
+
+- notebook executado por copia em memoria, sem gravar overrides no `.ipynb`;
+- `RUN_MODE = "smoke"`;
+- `TESTS_TO_RUN = ["test1", "test2", "test3"]`;
+- `MODELS_TO_RUN = ["gpt-4o-mini"]`;
+- `CLASSIFIER_MODEL = "gpt-4o-mini"`;
+- `N_REPETITIONS = 1`;
+- `SUBMIT_BATCHES = True`;
+- `POLL_BATCHES = True`;
+- `BATCH_POLL_INTERVAL_SECONDS = 180`;
+- `BATCH_TIMEOUT_MINUTES = 180`;
+- chave usada apenas como `OPENAI_API_KEY` efemera no processo do smoke.
+
+Resultado:
+
+- run gerado em `analysis/generated/test_runs/20260412_133942/`;
+- 3 batches de geracao submetidos e concluidos com `final_status = completed`;
+- 3 batches de classificacao submetidos e concluidos com `final_status = completed`;
+- todos os 6 batches tiveram `output_file_id` e `error_file_id = null`;
+- `live_unified_csv_validation.csv` passou nos tres testes:
+  - Teste 1: 8 linhas, schema final, 0 duplicatas, 0 historias ausentes, 0 generos ausentes;
+  - Teste 2: 4 linhas, schema final, 0 duplicatas, 0 historias ausentes, 0 generos ausentes;
+  - Teste 3: 6 linhas, schema final, 0 duplicatas, 0 historias ausentes, 0 generos ausentes;
+- arquivos finais pequenos criados:
+  - `csv/test1_smoke_unified.csv`;
+  - `csv/test2_smoke_unified.csv`;
+  - `csv/test3_smoke_unified.csv`.
+
+Validacao posterior sem API:
+
+- notebook executado novamente em `analysis_only`, sem `OPENAI_API_KEY`;
+- comparacao com `data/derived/`: 9/9 arquivos passaram;
+- comparacao com `data/supporting/`: 4/4 arquivos passaram;
+- auditoria LaTeX: 35/35 blocos e 896/896 checagens numericas passaram;
+- `data/raw/`, `data/derived/` e `data/supporting/` nao ficaram modificados no Git.
+
+Nota de seguranca:
+
+- a chave usada no smoke foi exposta na conversa; depois do teste, recomenda-se revogar/rotacionar essa chave no painel da OpenAI.
 
 ## 9. Decisoes
 
@@ -807,6 +857,7 @@ Riscos remanescentes:
 | 2026-04-12 | `data/supporting/` deve ser regenerado e comparado automaticamente junto com `data/derived/`. | As tabelas auxiliares tambem fazem parte da reproducibilidade do estudo. |
 | 2026-04-12 | O notebook deve auditar diretamente os numeros hardcoded em `main_english.tex` e `appendix.tex`. | Comparar apenas arquivos derivados nao prova que todos os resultados exibidos no paper/apendice estao cobertos. |
 | 2026-04-12 | A auditoria LaTeX deve explicitar `include_inconclusive` vs `exclude_inconclusive`. | Os N e alguns percentuais do paper/apendice usam convencoes diferentes, especialmente em legacy e profissao-modelo. |
+| 2026-04-12 | O primeiro teste real da API sera considerado validado no nivel `smoke`. | Os seis batches pequenos completaram, os downloads foram parseados e os tres CSVs pequenos passaram validacao de schema/linhas. |
 
 ## 10. Registro De Rodadas
 
@@ -815,20 +866,19 @@ Riscos remanescentes:
 | 2026-04-11 | Arqueologia inicial | Nao foi encontrado plano separado; foram encontrados CSVs finais, notebook historico e script limpo. |
 | 2026-04-11 | Planejamento inicial | Documento vivo criado; agentes acionados para notebook, modo teste e experiencia reviewer. |
 | 2026-04-11 | Agentes de planejamento | Notebook mapeado por celulas; estrategia `dry_run`/`smoke`/`pilot` proposta; checklist reviewer consolidado. |
+| 2026-04-12 | Smoke real Batch API | `smoke` com `gpt-4o-mini` executado nos tres testes; 3 batches de geracao + 3 batches de classificacao completaram e os CSVs pequenos passaram validacao. |
 
 ## 11. Proxima Rodada
 
 Decidir com Otavio:
 
-1. se a chave sera configurada via `OPENAI_API_KEY`;
-2. se o full rerun deve ser prometido como executavel ou documentado como opcional/caro;
-3. se `pilot` deve incluir `gpt-4.1-nano-2025-04-14` ou ficar so em `gpt-4o-mini` ate o smoke estar validado.
+1. se o full rerun deve ser prometido como executavel ou documentado como opcional/caro;
+2. se `pilot` deve incluir `gpt-4.1-nano-2025-04-14` ou ficar so em `gpt-4o-mini`;
+3. se a chave exposta na conversa ja foi revogada/rotacionada.
 
 Proxima fatia tecnica recomendada:
 
-1. revisar visualmente a celula de pipeline live de duas etapas antes de qualquer chamada real;
-2. testar essa secao com `OPENAI_API_KEY` e `N_REPETITIONS = 1`;
-3. confirmar que os downloads reais da API batem com o parser simulado;
-4. decidir se queremos uma auditoria separada da versao portuguesa do LaTeX;
-5. criar tabela completa dos desenhos experimentais para futura execucao `full_generation`;
-6. decidir e registrar o tratamento da correcao manual historica da celula 128.
+1. decidir se faremos um `pilot` maior antes de qualquer `full_generation`;
+2. decidir se queremos uma auditoria separada da versao portuguesa do LaTeX;
+3. criar tabela completa dos desenhos experimentais para futura execucao `full_generation`;
+4. decidir e registrar o tratamento da correcao manual historica da celula 128.
