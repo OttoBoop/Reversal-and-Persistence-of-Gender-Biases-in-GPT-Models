@@ -722,8 +722,8 @@ Validacoes executadas:
 
 Riscos remanescentes:
 
-- o boundary live da OpenAI foi testado em smoke pequeno com chave real; ainda falta decidir se faremos `pilot` maior;
-- o smoke moderno continua intencionalmente pequeno e nao substitui uma regeneracao completa;
+- o boundary live da OpenAI foi testado em smoke pequeno com chave real;
+- o smoke moderno continua intencionalmente pequeno e nao substitui os CSVs finais ja versionados;
 - regenerar historicamente os modelos legacy completos continua fora do escopo curto do smoke moderno;
 - a chave usada no smoke foi exposta na conversa e deve ser revogada/rotacionada.
 
@@ -786,9 +786,9 @@ Excecao documentada:
 
 Riscos remanescentes:
 
-- esta auditoria cobre tabelas numericas, regresses e sintese do paper/apendice em ingles; ela nao faz comparacao byte-a-byte das imagens `image1` a `image10`;
+- esta auditoria cobre tabelas numericas, regresses e sintese do paper/apendice em ingles; os graficos foram cobertos depois por uma auditoria propria de dados, nao por comparacao pixel-a-pixel;
 - tambem nao bloqueia a versao portuguesa do LaTeX;
-- a regeneracao live via OpenAI API foi validada apenas em smoke pequeno; ainda nao ha `pilot` nem `full_generation` real.
+- a regeneracao completa via OpenAI API segue como caminho opcional/caro para pesquisadores, nao como requisito para reproduzir tabelas, metricas e graficos a partir dos CSVs finais.
 
 ### 2026-04-12 - Smoke real com Batch API
 
@@ -838,6 +838,94 @@ Nota de seguranca:
 
 - a chave usada no smoke foi exposta na conversa; depois do teste, recomenda-se revogar/rotacionar essa chave no painel da OpenAI.
 
+### 2026-04-12 - Auditoria dos graficos do paper
+
+Motivo:
+
+- as tabelas e regressoes ja estavam auditadas contra `main_english.tex`, `appendix.tex` e os CSVs finais;
+- faltava provar, de forma sistematica, que as 10 figuras usadas no paper tambem sao regeneradas a partir de `data/raw/`;
+- o alvo correto e o conteudo cientifico dos graficos: denominadores, percentuais e mapeamento LaTeX -> PNG -> dados, nao uma comparacao byte-a-byte ou pixel-a-pixel das imagens.
+
+Correcoes aplicadas:
+
+- adicionada secao **Paper Figure Audit** ao notebook replicavel, depois da reproducao analitica a partir dos CSVs versionados;
+- o notebook extrai programaticamente as figuras de `paper/latex/main_english.tex`;
+- criado um mapeamento explicito das 10 figuras canonicas:
+  - `image5`: Teste 1, familia de modelo, valencia negativa;
+  - `image10`: Teste 1, familia de modelo, valencia positiva;
+  - `image9`: Teste 1, idioma x valencia, modelos Chat;
+  - `image6`: Teste 1, valencia x ordem de exemplos, GPT-3 Legacy;
+  - `image8`: Teste 2, familia de modelo, feedback negativo;
+  - `image7`: Teste 2, familia de modelo, feedback positivo;
+  - `image3`: Teste 2, idioma x valencia, modelos Chat;
+  - `image4`: Teste 2, valencia x ordem de exemplos, GPT-3 Legacy;
+  - `image2`: Teste 3, posicoes selecionadas, modelos Chat;
+  - `image1`: Teste 3, posicoes selecionadas, GPT-3 Legacy;
+- criados outputs em `analysis/generated/notebook_analysis/figure_audit/`:
+  - `figure_audit_summary.csv`;
+  - `figure_numeric_checks.csv`;
+  - `latex_figure_map.csv`;
+  - `figure_audit_notes.md`;
+  - `source_data/*.csv`, uma tabela de dados por figura.
+
+Convencao dos graficos:
+
+- todos os graficos de barras empilhadas mantem todas as linhas no denominador;
+- `Male` e `Female` sao contados diretamente;
+- qualquer outro valor de `gender`, incluindo `Unknown` e `Inconclusive Story`, entra em `Other`;
+- essa convencao e diferente de algumas tabelas do apendice que excluem inconclusivos, e por isso fica documentada separadamente.
+
+Validacoes executadas:
+
+- notebook executado inteiro em `analysis_only`, sem API key;
+- 10/10 figuras do LaTeX em ingles auditadas;
+- 10/10 PNGs do paper encontrados e nao brancos em `paper/latex/figuras_final/`;
+- 10/10 PNGs regenerados encontrados e nao brancos em `analysis/generated/notebook_analysis/figures/`;
+- 68 barras auditadas;
+- 272 checagens numericas feitas contra `data/raw/`:
+  - `n`;
+  - `% Male`;
+  - `% Female`;
+  - `% Other`;
+- 0 falhas na auditoria dos graficos;
+- comparacao com `data/derived/`: 9/9 arquivos passaram;
+- comparacao com `data/supporting/`: 4/4 arquivos passaram;
+- auditoria LaTeX de tabelas/resultados continuou passando: 35/35 blocos e 896/896 checagens numericas.
+
+Riscos remanescentes:
+
+- a auditoria dos graficos e de dados, nao de identidade visual pixel-a-pixel;
+- nao altera o LaTeX nem corrige imagens historicas silenciosamente;
+- uma revisao humana visual ainda pode ser feita como revisao editorial, mas nao e necessaria para provar os numeros dos graficos.
+
+### 2026-04-12 - Empacotamento para revisao humana
+
+Motivo:
+
+- Otavio pediu que os PDFs ficassem claramente enumerados na frente do repo, fora de subpastas;
+- o README antigo priorizava LaTeX e notebook historico, mas a revisao humana deve comecar pelos PDFs e pelo notebook replicavel novo.
+
+Correcoes aplicadas:
+
+- adicionados dois PDFs na raiz do repositorio:
+  - `paper_full_english.pdf`: copia do PDF ingles completo em `paper/latex/main_english.pdf`;
+  - `paper_abstract_rethink_ai_ethics.pdf`: PDF de uma pagina convertido de `docs/resumo_workshop_rethink_ai_ethics.docx`;
+- README reescrito para abrir com os PDFs da raiz;
+- README agora aponta explicitamente para:
+  - `analysis/notebooks/replicate_gender_bias_paper.ipynb` como notebook principal de peer review;
+  - `docs/plano_notebook_replicavel.md` como plano vivo;
+  - `analysis/notebooks/march_2026_tcc_publicavel.ipynb` como notebook historico/proveniencia, nao como entrada recomendada.
+
+Validacoes executadas:
+
+- `paper_full_english.pdf`: 34 paginas, titulo `Reversal and Persistence of Gender Biases in GPT Models`;
+- `paper_abstract_rethink_ai_ethics.pdf`: 1 pagina, texto extraivel via `pdftotext`;
+- README confere com o estado atual do notebook:
+  - `data/derived`: 9/9;
+  - `data/supporting`: 4/4;
+  - auditoria LaTeX: 35/35 blocos, 896/896 checagens;
+  - auditoria de graficos: 10/10 figuras, 272/272 checagens.
+
 ## 9. Decisoes
 
 | Data | Decisao | Motivo |
@@ -858,6 +946,8 @@ Nota de seguranca:
 | 2026-04-12 | O notebook deve auditar diretamente os numeros hardcoded em `main_english.tex` e `appendix.tex`. | Comparar apenas arquivos derivados nao prova que todos os resultados exibidos no paper/apendice estao cobertos. |
 | 2026-04-12 | A auditoria LaTeX deve explicitar `include_inconclusive` vs `exclude_inconclusive`. | Os N e alguns percentuais do paper/apendice usam convencoes diferentes, especialmente em legacy e profissao-modelo. |
 | 2026-04-12 | O primeiro teste real da API sera considerado validado no nivel `smoke`. | Os seis batches pequenos completaram, os downloads foram parseados e os tres CSVs pequenos passaram validacao de schema/linhas. |
+| 2026-04-12 | A auditoria dos graficos sera data-level, nao pixel-perfect. | O que precisa ser reproduzivel para peer review sao denominadores, percentuais e mapeamento dos graficos; dimensoes/antialiasing de PNG podem variar sem mudar o resultado cientifico. |
+| 2026-04-12 | Os PDFs da revisao humana ficam na raiz do repo. | O paper PDF e o abstract/resumo PDF sao os artefatos principais de leitura; LaTeX e fonte, nao porta de entrada. |
 
 ## 10. Registro De Rodadas
 
@@ -867,18 +957,13 @@ Nota de seguranca:
 | 2026-04-11 | Planejamento inicial | Documento vivo criado; agentes acionados para notebook, modo teste e experiencia reviewer. |
 | 2026-04-11 | Agentes de planejamento | Notebook mapeado por celulas; estrategia `dry_run`/`smoke`/`pilot` proposta; checklist reviewer consolidado. |
 | 2026-04-12 | Smoke real Batch API | `smoke` com `gpt-4o-mini` executado nos tres testes; 3 batches de geracao + 3 batches de classificacao completaram e os CSVs pequenos passaram validacao. |
+| 2026-04-12 | Auditoria dos graficos | 10/10 figuras do paper auditadas; 68 barras e 272 checagens numericas passaram contra os CSVs finais. |
+| 2026-04-12 | Empacotamento para revisao humana | Dois PDFs foram colocados na raiz e o README passou a abrir com PDFs + notebook replicavel novo. |
 
 ## 11. Proxima Rodada
 
-Decidir com Otavio:
-
-1. se o full rerun deve ser prometido como executavel ou documentado como opcional/caro;
-2. se `pilot` deve incluir `gpt-4.1-nano-2025-04-14` ou ficar so em `gpt-4o-mini`;
-3. se a chave exposta na conversa ja foi revogada/rotacionada.
-
 Proxima fatia tecnica recomendada:
 
-1. decidir se faremos um `pilot` maior antes de qualquer `full_generation`;
-2. decidir se queremos uma auditoria separada da versao portuguesa do LaTeX;
-3. criar tabela completa dos desenhos experimentais para futura execucao `full_generation`;
-4. decidir e registrar o tratamento da correcao manual historica da celula 128.
+1. revisar a narrativa do notebook para deixar cristalino que ele cobre chamadas pequenas de API, CSVs finais, tabelas, metricas e graficos do paper;
+2. consolidar o inventario dos outputs gerados, incluindo `latex_audit/` e `figure_audit/`;
+3. fazer uma revisao humana final do notebook antes de tratar esta versao como pronta para peer review.
