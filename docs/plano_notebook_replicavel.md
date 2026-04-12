@@ -575,8 +575,54 @@ Perguntas novas/renovadas:
 1. Para a versao destinada a peer reviewers, o default do notebook deve ser `RUN_MODE = "analysis_only"`? A primeira versao esta em `dry_run`, ainda sem custo, porque isso tambem gera JSONL pequeno automaticamente.
 2. No proximo loop, a classificacao real do smoke deve ser implementada como uma secao imediatamente executavel apos download dos batches, ou como uma secao manual em duas etapas para facilitar auditoria?
 3. Devemos transformar a correcao manual antiga da celula 128 em `data/supporting/manual_gender_overrides.csv`, mesmo que ela nao seja necessaria para os CSVs atuais?
-21. Quais outputs finais devem ser comparados automaticamente com os versionados?
-22. A correcao manual de genero da celula 128 deve virar um arquivo `manual_gender_overrides.csv` ou apenas uma nota de provenance?
+
+### 2026-04-12 - Revisao critica do pipeline de geracao
+
+Motivo:
+
+- Otavio pediu uma comparacao cuidadosa com o plano e com o bloco historico, especialmente verificando se ha duas chamadas separadas: uma para gerar historias e outra para classificar genero.
+
+Achado principal:
+
+- a primeira versao preparava JSONL e polling, mas ainda deixava a montagem real `historias baixadas -> classificacao -> CSV final pequeno` como instrucao manual. Isso nao era suficiente para revisao humana do pipeline de geracao.
+
+Correcoes implementadas:
+
+- prompts de geracao alinhados mais de perto aos blocos historicos:
+  - Teste 1 volta a usar a instrucao de historia em 1 paragrafo e inicio fixo `In this narrative, we follow` / `Nesta narrativa, acompanhamos`;
+  - Teste 2 volta a usar o cenario de feedback no escritorio do gerente e inicio fixo `In this story we follow...` / `Nesta historia seguimos...`;
+  - Teste 3 volta a usar o cenario em que o ocupante da posicao planeja iniciar um novo projeto;
+- formato de `input` das chamadas `/v1/responses` alinhado ao notebook historico, usando itens `input_text`;
+- schemas de geracao agora incluem metadados constantes e `historia`, em vez de apenas um campo generico `story`;
+- schemas de classificacao agora incluem `story_id` constante alem de `gender` e `explanation`;
+- acrescentado teste seco de ponta a ponta:
+  1. simula outputs de batch de geracao;
+  2. parseia esses outputs com os mesmos helpers usados para downloads reais;
+  3. cria JSONL de classificacao a partir das historias parseadas;
+  4. simula outputs de classificacao;
+  5. faz merge historia + classificacao;
+  6. grava `test1_dry_run_unified.csv`, `test2_dry_run_unified.csv` e `test3_dry_run_unified.csv` com os schemas finais;
+  7. valida colunas, duplicatas, historias ausentes e generos ausentes.
+
+Validacao nova:
+
+- notebook executado novamente com `nbclient`;
+- `dry_run_jsonl_validation.csv` passou para todos os JSONL;
+- `dry_run_unified_csv_validation.csv` passou para os tres CSVs pequenos;
+- contagens dos CSVs pequenos:
+  - Teste 1: 8 linhas;
+  - Teste 2: 4 linhas;
+  - Teste 3: 6 linhas;
+- todos os tres CSVs pequenos possuem exatamente as colunas finais documentadas.
+
+Duvidas que permanecem antes de chamar API real:
+
+1. O boundary live da OpenAI ainda nao foi testado: upload do arquivo, execucao do batch, polling real e download real.
+2. A amostra `smoke` cobre apenas 2 categorias do Teste 1 e 6 posicoes do Teste 3; isso e bom para custo, mas nao prova o desenho completo.
+3. A reproducao completa ainda precisa de uma tabela final de desenhos experimentais completos, nao apenas das amostras de smoke.
+4. Ainda falta decidir se a correcao manual historica da celula 128 vira arquivo de provenance.
+5. Quais outputs finais, alem dos nove CSVs ja comparados, devem ser comparados automaticamente com os versionados?
+6. A correcao manual de genero da celula 128 deve virar um arquivo `manual_gender_overrides.csv` ou apenas uma nota de provenance?
 
 ## 9. Decisoes
 
@@ -611,11 +657,10 @@ Decidir com Otavio:
 3. se o full rerun deve ser prometido como executavel ou documentado como opcional/caro;
 4. se `pilot` deve incluir `gpt-4.1-nano-2025-04-14` ou ficar so em `gpt-4o-mini` ate o smoke estar validado.
 
-Se essas decisoes forem aprovadas, proxima fatia de trabalho:
+Proxima fatia tecnica recomendada:
 
-1. ajustar ambiente minimo (`requirements.txt` ou alternativa);
-2. criar esqueleto do notebook novo;
-3. implementar validacao e reproducao `analysis_only`;
-4. implementar geracao `dry_run` pequena dos Testes 1, 2 e 3;
-5. implementar funcoes de submissao, polling e download sem executar API real por padrao;
-6. rodar smoke local sem API.
+1. decidir default reviewer (`analysis_only` ou `dry_run`);
+2. implementar uma secao de smoke real que submeta os tres batches de geracao, aguarde polling, baixe respostas, crie os tres batches de classificacao, aguarde polling, baixe respostas e grave CSVs pequenos finais;
+3. testar essa secao com `OPENAI_API_KEY` e `N_REPETITIONS = 1`;
+4. criar tabela completa dos desenhos experimentais para futura execucao `full_generation`;
+5. decidir e registrar o tratamento da correcao manual historica da celula 128.
