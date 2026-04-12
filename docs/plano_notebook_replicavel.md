@@ -727,6 +727,67 @@ Riscos remanescentes:
 - regenerar historicamente os modelos legacy completos continua fora do escopo curto do smoke moderno;
 - antes de fornecer chave de API, ainda vale revisar visualmente a nova celula de pipeline live e o manifest gerado.
 
+### 2026-04-12 - Auditoria LaTeX das tabelas e resultados
+
+Motivo:
+
+- a comparacao com `data/derived/` e `data/supporting/` provava que os artefatos versionados eram reproduzidos, mas nao provava sozinha que todos os numeros hardcoded no paper e no apendice estavam cobertos;
+- Otavio pediu uma verificacao sistematica pelo outro lado: ler `main_english.tex` e `appendix.tex` e conferir se os resultados usados ali saem dos CSVs finais.
+
+Correcoes aplicadas:
+
+- adicionada secao **Paper And Appendix Audit** ao notebook replicavel;
+- fontes canonicas definidas para esta auditoria:
+  - `paper/latex/main_english.tex`;
+  - `paper/latex/appendix.tex`;
+  - os tres CSVs finais em `data/raw/`;
+- a versao portuguesa do LaTeX ficou como duplicata/traducao, fora do bloqueio principal desta rodada;
+- criados outputs em `analysis/generated/notebook_analysis/latex_audit/`:
+  - `latex_audit_summary.csv`;
+  - `latex_numeric_checks.csv`;
+  - `paper_regression_recomputed.csv`;
+  - `appendix_profession_model_percent_male.csv`;
+  - `latex_audit_notes.md`;
+- a auditoria recalcula regresses Chat e GPT-3 Legacy com `statsmodels.OLS`;
+- a auditoria extrai programaticamente blocos/tabelas relevantes do LaTeX, mas usa mapeamentos explicitos entre bloco LaTeX e especificacao estatistica;
+- implementadas e documentadas duas convencoes:
+  - `include_inconclusive`: mantem `Inconclusive Story` como `is_male = 0`;
+  - `exclude_inconclusive`: remove `Inconclusive Story`;
+- a tabela completa `% Male by Profession and Model` do apendice e recalculada usando `exclude_inconclusive`, que explica por que alguns percentuais de `babbage-002` so batem quando inconclusivos saem do denominador.
+
+Validacoes executadas:
+
+- notebook executado inteiro em `analysis_only`, sem API key;
+- comparacao com `data/derived/`: 9/9 arquivos continuam byte-identicos aos versionados;
+- comparacao com `data/supporting/`: 4/4 arquivos continuam byte-identicos aos versionados;
+- auditoria LaTeX:
+  - 35 blocos/tabelas auditados;
+  - 896 checagens numericas;
+  - 294 celulas da tabela profissao-modelo;
+  - 0 falhas;
+  - 332 checagens usando `exclude_inconclusive`;
+  - 564 checagens usando `include_inconclusive`;
+- valores especificos confirmados:
+  - Teste 1 Chat full: `beta = -0.6137`, `N = 13653`, `R2 = 0.5418`;
+  - Teste 2 Chat full: `beta = -0.2359`, `N = 1560`, `R2 = 0.2776`;
+  - Teste 3 Chat full: `beta = +0.0274`, `N = 7560`, `R2 = 0.2138`;
+  - Teste 1 Legacy shot com inconclusivos: `N = 4320`, `R2 = 0.0039`;
+  - Teste 1 Legacy summary sem inconclusivos: `N = 4296`;
+  - tabela profissao-modelo: 294/294 celulas batem sem `Inconclusive Story`.
+
+Excecao documentada:
+
+- ha uma divergencia nao substantiva no `t` do intercepto da regressao `appendix_t1_chat_simple`;
+- o LaTeX reporta `t = 177.92`, enquanto `statsmodels` em precisao completa gera `t = 178.68` e a razao entre coeficiente/EP exibidos gera `t = 176.88`;
+- coeficiente, EP, N, R2, p-valor e a linha substantiva `is_positive` dessa mesma regressao batem;
+- a auditoria marca essa diferenca como excecao documentada em `latex_numeric_checks.csv` e `latex_audit_notes.md`, nao como falha silenciosa.
+
+Riscos remanescentes:
+
+- esta auditoria cobre tabelas numericas, regresses e sintese do paper/apendice em ingles; ela nao faz comparacao byte-a-byte das imagens `image1` a `image10`;
+- tambem nao bloqueia a versao portuguesa do LaTeX;
+- a regeneracao live via OpenAI API continua sem smoke real.
+
 ## 9. Decisoes
 
 | Data | Decisao | Motivo |
@@ -744,6 +805,8 @@ Riscos remanescentes:
 | 2026-04-11 | Outputs de teste nao devem escrever em `data/raw/` nem `data/derived/`. | Evita confusao entre dados finais versionados e reruns locais. |
 | 2026-04-12 | `analysis_only` sera o default salvo do notebook. | O caminho recomendado para peer reviewers deve reproduzir tabelas, metricas e graficos sem chave de API nem custo. |
 | 2026-04-12 | `data/supporting/` deve ser regenerado e comparado automaticamente junto com `data/derived/`. | As tabelas auxiliares tambem fazem parte da reproducibilidade do estudo. |
+| 2026-04-12 | O notebook deve auditar diretamente os numeros hardcoded em `main_english.tex` e `appendix.tex`. | Comparar apenas arquivos derivados nao prova que todos os resultados exibidos no paper/apendice estao cobertos. |
+| 2026-04-12 | A auditoria LaTeX deve explicitar `include_inconclusive` vs `exclude_inconclusive`. | Os N e alguns percentuais do paper/apendice usam convencoes diferentes, especialmente em legacy e profissao-modelo. |
 
 ## 10. Registro De Rodadas
 
@@ -766,5 +829,6 @@ Proxima fatia tecnica recomendada:
 1. revisar visualmente a celula de pipeline live de duas etapas antes de qualquer chamada real;
 2. testar essa secao com `OPENAI_API_KEY` e `N_REPETITIONS = 1`;
 3. confirmar que os downloads reais da API batem com o parser simulado;
-4. criar tabela completa dos desenhos experimentais para futura execucao `full_generation`;
-5. decidir e registrar o tratamento da correcao manual historica da celula 128.
+4. decidir se queremos uma auditoria separada da versao portuguesa do LaTeX;
+5. criar tabela completa dos desenhos experimentais para futura execucao `full_generation`;
+6. decidir e registrar o tratamento da correcao manual historica da celula 128.
