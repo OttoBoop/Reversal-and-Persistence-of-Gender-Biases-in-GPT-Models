@@ -1,0 +1,136 @@
+\begin{thebibliography}{}
+
+\bibitem[ABID et~al., 2021]{abid2021}
+ABID, A., FAROOQI, M., and ZOU, J. (2021).
+\newblock Persistent anti-muslim bias in large language models.
+\newblock In {\em ACM CONFERENCE ON AI, ETHICS, AND SOCIETY (AIES), 2021},
+  pages 298--306.
+
+\bibitem[ANGWIN et~al., 2016]{angwin2016}
+ANGWIN, J., LARSON, J., MATTU, S., and KIRCHNER, L. (2016).
+\newblock Machine bias.
+
+\bibitem[BAI et~al., 2024]{bai2024}
+BAI, J. et~al. (2024).
+\newblock Measuring implicit bias in explicitly unbiased large language models.
+
+\bibitem[BALESTRI, 2024]{balestri2024}
+BALESTRI, R. (2024).
+\newblock Examining multimodal gender and content bias in chatgpt-4o.
+
+\bibitem[BALESTRI, 2025]{balestri2025}
+BALESTRI, R. (2025).
+\newblock Gender and content bias in large language models: a case study on
+  google gemini 2.0 flash experimental.
+\newblock {\em Frontiers in Artificial Intelligence}, 8.
+
+\bibitem[BERTRAND and MULLAINATHAN, 2004]{bertrand2004}
+BERTRAND, M. and MULLAINATHAN, S. (2004).
+\newblock Are emily and greg more employable than lakisha and jamal? a field
+  experiment on labor market discrimination.
+\newblock {\em American Economic Review}, 94(4):991--1013.
+
+\bibitem[DASTIN, 2018]{dastin2018}
+DASTIN, J. (2018).
+\newblock Amazon scraps secret ai recruiting tool that showed bias against
+  women.
+
+\bibitem[FERRARA, 2024]{ferrara2024}
+FERRARA, E. (2024).
+\newblock Fairness and bias in artificial intelligence: A brief survey of
+  sources, impacts, and mitigation strategies.
+\newblock {\em Sci}, 6(1).
+
+\bibitem[HASANUZZAMAN and SOORAKSA, 2023]{hasanuzzaman2023}
+HASANUZZAMAN, T. and SOORAKSA, N. (2023).
+\newblock Global employability skills in the 21st century workplace: A
+  semi-systematic literature review.
+\newblock {\em Heliyon}, 9(11).
+
+\bibitem[HEYMANN et~al., 2021]{heymann2021}
+HEYMANN, J., BOSE, B., WAISATH, W., et~al. (2021).
+\newblock Legislative approaches to nondiscrimination at work: a comparative
+  analysis across 13 groups in 193 countries.
+\newblock {\em Equality, Diversity and Inclusion: An International Journal},
+  40(3):225--241.
+
+\bibitem[ISO et~al., 2025]{iso2025}
+ISO, H. et~al. (2025).
+\newblock Fairness in large language models for resume screening.
+
+\bibitem[JOSHI, 2024]{joshi2024}
+JOSHI, I. (2024).
+\newblock Since lawyers are males: Examining implicit gender bias in hindi
+  language generation by llms.
+
+\bibitem[KARVONEN and MARKS, 2025]{karvonen2025}
+KARVONEN, A. and MARKS, S. (2025).
+\newblock Robustly improving llm fairness in realistic settings via
+  interpretability.
+
+\bibitem[LIU et~al., 2025]{liu2025}
+LIU, D., LIU, Y., JIN, G., et~al. (2025).
+\newblock Mitigating biases in language models via bias unlearning.
+
+\bibitem[LUCY and BAMMAN, 2021]{lucy2021}
+LUCY, L. and BAMMAN, D. (2021).
+\newblock Gender and representation bias in gpt-3 generated stories.
+\newblock In {\em WORKSHOP ON NARRATIVE UNDERSTANDING}.
+
+\bibitem[MIRZA et~al., 2024]{mirza2024}
+MIRZA, V., KULKARNI, R., and JADHAV, A. (2024).
+\newblock Evaluating gender, racial, and age biases in large language models: A
+  comparative analysis of occupational and crime scenarios.
+
+\bibitem[OBERMEYER et~al., 2019]{obermeyer2019}
+OBERMEYER, Z., POWERS, B., VOGELI, C., and MULLAINATHAN, S. (2019).
+\newblock Dissecting racial bias in an algorithm used to manage the health of
+  populations.
+\newblock {\em Science}, 366(6464):447--453.
+
+\bibitem[{OpenAI}, 2023]{openai2023}
+{OpenAI} (2023).
+\newblock Gpt-4 system card.
+
+\bibitem[TAN and CELIS, 2019]{tan2019}
+TAN, Y.~C. and CELIS, L.~E. (2019).
+\newblock Assessing social and intersectional biases in contextualized word
+  representations.
+
+\bibitem[{UNESCO}, 2024]{unesco2024}
+{UNESCO} (2024).
+\newblock Challenging systematic prejudices: an investigation into bias against
+  women and girls in large language models.
+
+\bibitem[VAISHAMPAYAN et~al., 2025]{vaishampayan2025}
+VAISHAMPAYAN, A. et~al. (2025).
+\newblock A comparison of human and llm-generated evaluations of resume
+  quality.
+
+\bibitem[VELDANDA et~al., 2023]{veldanda2023}
+VELDANDA, A.~K., GROB, F., THAKUR, S., PEARCE, H., TAN, B., KARRI, R., and
+  GARG, S. (2023).
+\newblock Are emily and greg still more employable than lakisha and jamal?
+  investigating algorithmic hiring bias in the era of chatgpt.
+
+\bibitem[WANG et~al., 2024]{wang2024}
+WANG, Z., WU, Z., GUAN, X., et~al. (2024).
+\newblock Jobfair: a framework for benchmarking gender hiring bias in large
+  language models.
+\newblock In {\em Findings of the Association for Computational Linguistics:
+  EMNLP 2024}, pages 3227--3246.
+
+\bibitem[WOLF et~al., 2017]{wolf2017}
+WOLF, M.~J., MILLER, K.~W., and GRODZINSKY, F.~S. (2017).
+\newblock Why we should have seen that coming: comments on microsoft's tay
+  experiment, and wider implications.
+\newblock {\em ACM SIGCAS Computers and Society}, 47(3):54--64.
+
+\bibitem[YUGESWARDEENOO et~al., 2024]{yugeswardeenoo2024}
+YUGESWARDEENOO, D., ZHU, K., and O'BRIEN, S. (2024).
+\newblock Question-analysis prompting improves llm performance in reasoning
+  tasks.
+\newblock In {\em PROCEEDINGS OF THE 62ND ANNUAL MEETING OF THE ASSOCIATION FOR
+  COMPUTATIONAL LINGUISTICS (Student Research Workshop)}, pages 402--413.
+
+\end{thebibliography}

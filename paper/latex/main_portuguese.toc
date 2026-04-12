@@ -1,0 +1,53 @@
+\babel@toc {brazilian}{}\relax 
+\contentsline {section}{\numberline {1}Introdução}{4}{section.1}%
+\contentsline {section}{\numberline {2}Revisão de Literatura}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Vieses tradicionais}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Esforços de Mitigação e o Risco de Sobrecorreção}{7}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Aplicação na triagem de currículos}{8}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Outros casos de Viés em LLMs modernas}{9}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Metodologia}{9}{section.3}%
+\setcounter {tocdepth}{2}
+\contentsline {subsection}{\numberline {3.1}Geral}{9}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Estrutura Geral do Prompt Completions}{10}{subsubsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.2}Teste 1: presença de características desejáveis}{11}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Prompts Utilizados (modelos chat)}{11}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Prompts Utilizados (modelos completion)}{12}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.3}Teste 2: Valência do Feedback}{14}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Prompts Utilizados (modelos chat)}{14}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Prompts Utilizados (modelos completion)}{14}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Condições de Ordenação}{15}{subsubsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.4}Teste 3: Profissões e Níveis de Poder}{15}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Prompt Utilizado (modelos chat)}{16}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Prompts Utilizados (modelos completion)}{16}{subsubsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.5}Determinação de Gênero e Armazenamento dos Dados}{17}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Especificação Econométrica}{18}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Regressões para Modelos Chat}{19}{subsubsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.7}Parâmetros de Geração}{20}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Testes de Significância}{20}{subsection.3.8}%
+\setcounter {tocdepth}{3}
+\contentsline {section}{\numberline {4}Resultados}{20}{section.4}%
+\setcounter {tocdepth}{2}
+\contentsline {subsection}{\numberline {4.1}Teste 1: Características no Ambiente de Trabalho}{21}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Modelos Chat vs. Modelos Completions}{21}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Efeito do Idioma}{23}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Efeito da Ordem dos Exemplos (Shot Order)}{23}{subsubsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.2}Teste 2: Cenários de Feedback}{24}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Resultados Principais}{25}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Efeito do Idioma}{27}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Efeito da Ordem dos Exemplos (Shot Order)}{27}{subsubsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.3}Teste 3: Associações Ocupacionais}{28}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Efeito do Nível de Poder}{28}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Persistência de Estereótipos Ocupacionais}{29}{subsubsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.4}Síntese dos Resultados}{30}{subsection.4.4}%
+\setcounter {tocdepth}{3}
+\contentsline {section}{\numberline {5}Conclusão}{31}{section.5}%
+\contentsline {section}{\numberline {6}Apêndice}{32}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Definindo Viés}{32}{subsection.6.1}%
+\setcounter {tocdepth}{2}
+\contentsline {subsubsection}{\numberline {6.1.1}Proxy vs. Ideal --- Definindo Discriminação}{33}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}Exceções à Hipótese $\tilde {\beta }_{p,\text {ideal}}$ = 0}{34}{subsubsection.6.1.2}%
+\setcounter {tocdepth}{3}
+\contentsline {subsection}{\numberline {6.2}Regressões Completas}{34}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Teste 1: Características no Ambiente de Trabalho}{34}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Teste 2: Cenários de Feedback}{37}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}Teste 3: Associações Ocupacionais}{39}{subsubsection.6.2.3}%
