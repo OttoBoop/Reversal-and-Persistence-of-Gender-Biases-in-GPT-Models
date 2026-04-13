@@ -1,23 +1,24 @@
 # Reversal and Persistence of Gender Biases in GPT Models
 
-This repository is organized for human review of the working paper and for reproducing its tables, metrics, and figures from the final CSVs.
+This repository contains the paper PDFs, final data, reproducibility notebook, original result tables, paper figures, and audit outputs for the working paper.
 
 ## Paper PDFs
 
-Start here:
+Start with the PDFs in the repository root:
 
 - [paper_full_english.pdf](paper_full_english.pdf): full English working paper.
 - [paper_appendix_english.pdf](paper_appendix_english.pdf): English appendix.
+- [paper_full_portuguese.pdf](paper_full_portuguese.pdf): Portuguese version preserved as a single paper PDF.
 
-The LaTeX source is available in `paper/latex/`, but the PDFs above are the review entry points.
+The LaTeX source is available in `paper/latex/`, but these PDFs are the review entry points.
 
 ## Reproducibility Notebook
 
-Use this notebook:
+Use this notebook to reproduce the paper tables, metrics, and figures from the final CSVs:
 
 - [analysis/notebooks/replicate_gender_bias_paper.ipynb](analysis/notebooks/replicate_gender_bias_paper.ipynb)
 
-This is the new peer-review notebook. It is saved in `RUN_MODE = "analysis_only"` by default, so it does not need an OpenAI API key. In that mode it reads the final CSVs, regenerates the paper tables and figures, and writes audit reports under `analysis/generated/notebook_analysis/`.
+The notebook is saved in `RUN_MODE = "analysis_only"` by default. This mode does not need an OpenAI API key. It reads the final CSVs in `data/raw/`, regenerates the analytical outputs, and writes audit reports under `analysis/generated/notebook_analysis/`.
 
 Current validation status:
 
@@ -27,9 +28,7 @@ Current validation status:
 - Figure audit: 10/10 paper figures pass, with 68 plotted bars and 272/272 numeric checks.
 - One non-substantive historical exception is documented: the intercept t-statistic in `appendix_t1_chat_simple`; the coefficient, standard error, N, R2, p-value, and substantive regressor all match.
 
-Historical notebook, kept only for provenance:
-
-- [analysis/notebooks/march_2026_tcc_publicavel.ipynb](analysis/notebooks/march_2026_tcc_publicavel.ipynb)
+The notebook also contains optional small API test modes. Those runs are for checking the generation/classification pipeline and do not replace the final CSVs.
 
 ## Final Data
 
@@ -39,7 +38,7 @@ The final unified CSVs used by the paper are:
 - [data/raw/df_teste_2_unified.csv](data/raw/df_teste_2_unified.csv)
 - [data/raw/df_teste_3_unified.csv](data/raw/df_teste_3_unified.csv)
 
-These are the canonical data files for reproducing the paper results. The notebook can also run small API smoke tests, but those runs are optional and do not replace the final CSVs.
+These are the canonical data files for reproducing the paper results.
 
 ## Original Results And Figures
 
@@ -52,22 +51,17 @@ Original paper figures used by LaTeX:
 
 - [paper/latex/figuras_final/](paper/latex/figuras_final/)
 
-Regenerated outputs from the reproducibility notebook:
+## Regenerated Outputs And Audits
+
+The reproducibility notebook writes regenerated outputs here:
 
 - [analysis/generated/notebook_analysis/](analysis/generated/notebook_analysis/)
 - [analysis/generated/notebook_analysis/figures/](analysis/generated/notebook_analysis/figures/)
 - [analysis/generated/notebook_analysis/latex_audit/](analysis/generated/notebook_analysis/latex_audit/)
 - [analysis/generated/notebook_analysis/figure_audit/](analysis/generated/notebook_analysis/figure_audit/)
 
-## Source Files
+## Extra References
 
-Manuscript source:
+For historical notebooks, LaTeX source files, older PDFs, presentations, and archive notes, see:
 
-- [paper/latex/main_english.tex](paper/latex/main_english.tex)
-- [paper/latex/appendix.tex](paper/latex/appendix.tex)
-
-Project plan and audit log:
-
-- [docs/plano_notebook_replicavel.md](docs/plano_notebook_replicavel.md)
-
-The Portuguese LaTeX version is preserved in the repository, but the current review target is the English paper plus appendix.
+- [docs/extra_references.md](docs/extra_references.md)

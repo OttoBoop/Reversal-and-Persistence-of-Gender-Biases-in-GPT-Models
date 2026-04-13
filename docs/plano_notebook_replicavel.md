@@ -907,9 +907,10 @@ Motivo:
 
 Correcoes aplicadas:
 
-- adicionados dois PDFs na raiz do repositorio:
+- adicionados tres PDFs na raiz do repositorio:
   - `paper_full_english.pdf`: copia do PDF ingles completo em `paper/latex/main_english.pdf`;
   - `paper_appendix_english.pdf`: PDF standalone compilado de `paper/latex/appendix.tex`;
+  - `paper_full_portuguese.pdf`: copia da versao portuguesa em `paper/latex/main_portuguese.pdf`;
 - o PDF de resumo de conferencia foi removido da raiz porque nao e o artefato pedido para revisao do paper;
 - README reescrito para abrir com os PDFs da raiz e o notebook replicavel, sem dar destaque a artefatos laterais;
 - README agora aponta explicitamente para:
@@ -918,12 +919,13 @@ Correcoes aplicadas:
   - os resultados originais em `data/derived/` e `data/supporting/`;
   - as figuras originais em `paper/latex/figuras_final/`;
   - os outputs regenerados e auditorias em `analysis/generated/notebook_analysis/`;
-  - `analysis/notebooks/march_2026_tcc_publicavel.ipynb` como notebook historico/proveniencia, nao como entrada recomendada.
+  - `docs/extra_references.md` como lista curta de materiais de proveniencia, incluindo notebook historico, LaTeX, PDFs antigos, apresentacoes e arquivo importado.
 
 Validacoes executadas:
 
 - `paper_full_english.pdf`: 34 paginas, titulo `Reversal and Persistence of Gender Biases in GPT Models`;
 - `paper_appendix_english.pdf`: 15 paginas, titulo `Reversal and Persistence of Gender Biases in GPT Models`;
+- `paper_full_portuguese.pdf`: copia da versao portuguesa preservada;
 - README confere com o estado atual do notebook:
   - `data/derived`: 9/9;
   - `data/supporting`: 4/4;
