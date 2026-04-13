@@ -909,17 +909,21 @@ Correcoes aplicadas:
 
 - adicionados dois PDFs na raiz do repositorio:
   - `paper_full_english.pdf`: copia do PDF ingles completo em `paper/latex/main_english.pdf`;
-  - `paper_abstract_rethink_ai_ethics.pdf`: PDF de uma pagina convertido de `docs/resumo_workshop_rethink_ai_ethics.docx`;
-- README reescrito para abrir com os PDFs da raiz;
+  - `paper_appendix_english.pdf`: PDF standalone compilado de `paper/latex/appendix.tex`;
+- o PDF de resumo de conferencia foi removido da raiz porque nao e o artefato pedido para revisao do paper;
+- README reescrito para abrir com os PDFs da raiz e o notebook replicavel, sem dar destaque a artefatos laterais;
 - README agora aponta explicitamente para:
   - `analysis/notebooks/replicate_gender_bias_paper.ipynb` como notebook principal de peer review;
-  - `docs/plano_notebook_replicavel.md` como plano vivo;
+  - os CSVs finais em `data/raw/`;
+  - os resultados originais em `data/derived/` e `data/supporting/`;
+  - as figuras originais em `paper/latex/figuras_final/`;
+  - os outputs regenerados e auditorias em `analysis/generated/notebook_analysis/`;
   - `analysis/notebooks/march_2026_tcc_publicavel.ipynb` como notebook historico/proveniencia, nao como entrada recomendada.
 
 Validacoes executadas:
 
 - `paper_full_english.pdf`: 34 paginas, titulo `Reversal and Persistence of Gender Biases in GPT Models`;
-- `paper_abstract_rethink_ai_ethics.pdf`: 1 pagina, texto extraivel via `pdftotext`;
+- `paper_appendix_english.pdf`: 15 paginas, titulo `Reversal and Persistence of Gender Biases in GPT Models`;
 - README confere com o estado atual do notebook:
   - `data/derived`: 9/9;
   - `data/supporting`: 4/4;
@@ -947,7 +951,7 @@ Validacoes executadas:
 | 2026-04-12 | A auditoria LaTeX deve explicitar `include_inconclusive` vs `exclude_inconclusive`. | Os N e alguns percentuais do paper/apendice usam convencoes diferentes, especialmente em legacy e profissao-modelo. |
 | 2026-04-12 | O primeiro teste real da API sera considerado validado no nivel `smoke`. | Os seis batches pequenos completaram, os downloads foram parseados e os tres CSVs pequenos passaram validacao de schema/linhas. |
 | 2026-04-12 | A auditoria dos graficos sera data-level, nao pixel-perfect. | O que precisa ser reproduzivel para peer review sao denominadores, percentuais e mapeamento dos graficos; dimensoes/antialiasing de PNG podem variar sem mudar o resultado cientifico. |
-| 2026-04-12 | Os PDFs da revisao humana ficam na raiz do repo. | O paper PDF e o abstract/resumo PDF sao os artefatos principais de leitura; LaTeX e fonte, nao porta de entrada. |
+| 2026-04-12 | Os PDFs da revisao humana ficam na raiz do repo. | O paper PDF e o apendice PDF sao os artefatos principais de leitura; LaTeX e fonte, nao porta de entrada. |
 
 ## 10. Registro De Rodadas
 

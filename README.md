@@ -1,80 +1,73 @@
-# Vies de Genero Paper
+# Reversal and Persistence of Gender Biases in GPT Models
 
-This repository contains the paper, final datasets, reproducible notebook, generated tables, generated figures, and audit materials for **"Reversal and Persistence of Gender Biases in GPT Models"**.
+This repository is organized for human review of the working paper and for reproducing its tables, metrics, and figures from the final CSVs.
 
-## Start Here: PDFs For Human Review
+## Paper PDFs
 
-The PDFs at the repository root are the main review artifacts. Start with these before looking at LaTeX sources.
+Start here:
 
-- [paper_full_english.pdf](paper_full_english.pdf): full English paper PDF.
-- [paper_abstract_rethink_ai_ethics.pdf](paper_abstract_rethink_ai_ethics.pdf): one-page abstract/resumo PDF.
+- [paper_full_english.pdf](paper_full_english.pdf): full English working paper.
+- [paper_appendix_english.pdf](paper_appendix_english.pdf): English appendix.
 
-The LaTeX files are kept for source editing and rebuilding, but the PDF files above are the practical entry point for human revision.
+The LaTeX source is available in `paper/latex/`, but the PDFs above are the review entry points.
 
-## Main Reproducibility Notebook
+## Reproducibility Notebook
 
-- [analysis/notebooks/replicate_gender_bias_paper.ipynb](analysis/notebooks/replicate_gender_bias_paper.ipynb): new reproducible notebook for peer review.
-- [docs/plano_notebook_replicavel.md](docs/plano_notebook_replicavel.md): living implementation and audit plan.
-- [analysis/notebooks/march_2026_tcc_publicavel.ipynb](analysis/notebooks/march_2026_tcc_publicavel.ipynb): historical working notebook kept for provenance, not the recommended entry point.
+Use this notebook:
 
-The new notebook is saved with `RUN_MODE = "analysis_only"` by default. In that mode it uses the final CSVs in `data/raw/`, does not need an API key, and regenerates/audits the paper outputs under `analysis/generated/notebook_analysis/`.
+- [analysis/notebooks/replicate_gender_bias_paper.ipynb](analysis/notebooks/replicate_gender_bias_paper.ipynb)
 
-Current analysis-only coverage:
+This is the new peer-review notebook. It is saved in `RUN_MODE = "analysis_only"` by default, so it does not need an OpenAI API key. In that mode it reads the final CSVs, regenerates the paper tables and figures, and writes audit reports under `analysis/generated/notebook_analysis/`.
 
-- compares regenerated outputs with `data/derived/`: 9/9 passing;
-- compares regenerated outputs with `data/supporting/`: 4/4 passing;
-- audits paper and appendix LaTeX tables/results: 35/35 blocks and 896/896 numeric checks passing;
-- audits paper figures: 10/10 figures, 68 plotted bars, and 272 numeric checks passing;
-- preserves the one documented non-substantive LaTeX exception for the `appendix_t1_chat_simple` intercept t-statistic instead of changing the paper silently.
+Current validation status:
 
-The notebook also includes optional `dry_run` and `smoke` modes for small API-boundary tests. Those modes write only to `analysis/generated/test_runs/` and do not overwrite `data/raw/`, `data/derived/`, or `data/supporting/`.
+- `data/derived`: 9/9 regenerated files match.
+- `data/supporting`: 4/4 regenerated files match.
+- Paper/appendix table audit: 35/35 LaTeX result blocks pass, with 896/896 numeric checks.
+- Figure audit: 10/10 paper figures pass, with 68 plotted bars and 272/272 numeric checks.
+- One non-substantive historical exception is documented: the intercept t-statistic in `appendix_t1_chat_simple`; the coefficient, standard error, N, R2, p-value, and substantive regressor all match.
 
-## Repository Map
+Historical notebook, kept only for provenance:
 
-- `data/raw/`: final unified CSVs for Tests 1, 2, and 3.
-- `data/derived/`: main exported regression and proportion tables included in the project.
-- `data/supporting/`: supporting tables and summaries.
-- `analysis/notebooks/`: reproducibility notebook and historical notebook.
-- `analysis/scripts/`: script-based analysis entrypoint preserved from the project.
-- `analysis/generated/`: regenerated outputs, audit reports, figures, and local test runs.
-- `paper/latex/`: English and Portuguese LaTeX sources, bibliography, and figure assets.
-- `paper/pdf/`: older or preserved PDF artifacts from the working project.
-- `docs/`: living plan and submission/support documents.
-- `presentations/`: slide decks.
-- `archive/`: original source archive kept intact for provenance.
+- [analysis/notebooks/march_2026_tcc_publicavel.ipynb](analysis/notebooks/march_2026_tcc_publicavel.ipynb)
 
-## Quick Start
+## Final Data
 
-Install Python dependencies:
+The final unified CSVs used by the paper are:
 
-```bash
-python -m pip install -r requirements.txt
-```
+- [data/raw/df_teste_1_unified.csv](data/raw/df_teste_1_unified.csv)
+- [data/raw/df_teste_2_unified.csv](data/raw/df_teste_2_unified.csv)
+- [data/raw/df_teste_3_unified.csv](data/raw/df_teste_3_unified.csv)
 
-Open and run the main notebook:
+These are the canonical data files for reproducing the paper results. The notebook can also run small API smoke tests, but those runs are optional and do not replace the final CSVs.
 
-```text
-analysis/notebooks/replicate_gender_bias_paper.ipynb
-```
+## Original Results And Figures
 
-For a non-interactive check from the repository root, run the notebook with `nbclient` in an environment that has `requirements.txt` installed. The default `analysis_only` path should complete without an OpenAI API key.
+Original exported result tables:
 
-## LaTeX Sources
+- [data/derived/](data/derived/)
+- [data/supporting/](data/supporting/)
 
-The main manuscript sources are:
+Original paper figures used by LaTeX:
 
-- `paper/latex/main_english.tex`
-- `paper/latex/appendix.tex`
-- `paper/latex/main_portuguese.tex`
+- [paper/latex/figuras_final/](paper/latex/figuras_final/)
 
-The English PDF at the repository root was copied from `paper/latex/main_english.pdf`. Rebuild LaTeX only when editing the manuscript source; for review, use the root PDFs first.
+Regenerated outputs from the reproducibility notebook:
 
-## Provenance
+- [analysis/generated/notebook_analysis/](analysis/generated/notebook_analysis/)
+- [analysis/generated/notebook_analysis/figures/](analysis/generated/notebook_analysis/figures/)
+- [analysis/generated/notebook_analysis/latex_audit/](analysis/generated/notebook_analysis/latex_audit/)
+- [analysis/generated/notebook_analysis/figure_audit/](analysis/generated/notebook_analysis/figure_audit/)
 
-The repository was assembled from local working materials, including:
+## Source Files
 
-- `C:\prova-ai\Working paper data`
-- `C:\Users\otavi\Downloads\Copia_de_March_2026_TCC_E_PUBLICAVEL_.ipynb`
-- additional supporting files in `C:\Users\otavi\Downloads`
+Manuscript source:
 
-Filenames were normalized where useful for repository readability, but the imported content was not substantively rewritten unless documented in the living plan.
+- [paper/latex/main_english.tex](paper/latex/main_english.tex)
+- [paper/latex/appendix.tex](paper/latex/appendix.tex)
+
+Project plan and audit log:
+
+- [docs/plano_notebook_replicavel.md](docs/plano_notebook_replicavel.md)
+
+The Portuguese LaTeX version is preserved in the repository, but the current review target is the English paper plus appendix.
