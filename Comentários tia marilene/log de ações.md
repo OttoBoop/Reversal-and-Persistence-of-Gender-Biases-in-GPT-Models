@@ -208,9 +208,33 @@ Este é o **segundo problema do dia com presentation muito enxuta** (o primeiro 
 
 ### Próximos passos
 
-- Apresentar #5 com contexto completo
+- ~~Apresentar #5 com contexto completo~~ feito (entrada 8)
 - Depois #7 + #73 juntos (ligados)
 - Depois #52 com motivação real
+
+---
+
+## 2026-05-11 (entrada 8) — #5 aplicado (variante C2)
+
+### Decisão
+
+Otávio escolheu a **variante C2** após revisão iterativa. Razão: cobre os três testes + os dois eixos transversais (evolução geracional GPT-3→4→5 e EN/PT) que ficavam implícitos.
+
+### Texto inserido
+
+Em [`paper/latex/main_english.tex`](../paper/latex/main_english.tex#L107), no parágrafo 3 da Introduction, entre "...analyzing the gender of the generated characters." e "The first test consists of...":
+
+> *"More precisely, we pursue three empirical aims: to measure how desirable workplace characteristics, the valence of supervisor feedback, and occupational power-level cues each shape the gender of model-generated characters. We also examine two cross-cutting axes: the evolution of bias across three model generations (GPT-3, GPT-4, GPT-5) and, for the first two experiments, the role of language (English vs.\ Portuguese)."*
+
+### Verificação
+
+- `latexmk -pdf -g` rodou sem erro (34 páginas).
+- PDF lido — texto aparece corretamente na página 3, parágrafo 3 do Introduction.
+- Quebras de linha e justificação naturais.
+
+### Status do comentário
+
+#5 ✓ **aplicado**.
 
 ---
 
