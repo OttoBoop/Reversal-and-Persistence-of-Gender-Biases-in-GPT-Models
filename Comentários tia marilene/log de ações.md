@@ -259,4 +259,36 @@ Otávio escolheu **manter intro e conclusão como estão**. #7 (parte "RQ") e #7
 
 ---
 
+## 2026-05-11 (entrada 10) — #52 rejeitado (manter "Results")
+
+### Decisão: A — manter "Results"
+
+Otávio escolheu manter o nome da seção 4 como "Results".
+
+### Razões
+
+1. **Motoki et al. usa exatamente "Results"** (Section 4 no PDF p.12). Subseções dele: 4.1 Descriptives, 4.2 Main results, 4.3 Placebo test, 4.4 Other polarized countries — cobrem análises descritivas + inferenciais + robustez tudo dentro de "Results".
+2. **Tia softenizou** o próprio comentário: "Fiquei pensando se seria melhor".
+3. A intuição da tia ("tratava de ambos") está correta — a seção tem análise + resultados — mas "Results" cobrindo análise é a convenção Public Choice, não confusão a resolver.
+
+### Status
+
+#52 ✗ **rejeitado**.
+
+### Bloco "Substantivos" CONCLUÍDO
+
+Todos os 6 comentários substantivos resolvidos:
+- #5 ✓ aplicado (C2: 3 aims + 2 eixos transversais)
+- #6 ✗ rejeitado (quali/quanti é humanas)
+- #7 ✗ rejeitado (Motoki também antecipa resultados)
+- #23 ✗ rejeitado (= #6)
+- #52 ✗ rejeitado (Motoki usa "Results")
+- #73 ✗ rejeitado (contingente em #7)
+
+### Observação geral
+
+Foi um bloco bem "estilo Public Choice / Motoki". Razão: tia, vinda de humanas, sugeriu várias modificações que são convenção humanística mas não economia. Padrão a manter para próximos blocos: confrontar cada sugestão com o que o Motoki faz antes de decidir.
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)
