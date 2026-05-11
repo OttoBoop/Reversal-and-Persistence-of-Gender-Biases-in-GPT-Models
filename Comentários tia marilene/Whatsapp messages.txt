@@ -1,0 +1,49 @@
+[06:58, 5/7/2026] Otávio Bopp: Bom dia tia!
+[06:59, 5/7/2026] Otávio Bopp: Comi estão as coisas?
+[07:00, 5/7/2026] Otávio Bopp: Ahh
+[07:00, 5/7/2026] Otávio Bopp: Tia
+[07:00, 5/7/2026] Otávio Bopp: Então
+[07:00, 5/7/2026] Otávio Bopp: Eu tava bem em dúvida sobre o que fazer nessa caixa
+[07:00, 5/7/2026] Otávio Bopp: Isso aqui ficou bom
+[07:03, 5/7/2026] Otávio Bopp: Okay, gostei MUITO das críticas. Muito obrigado!!!
+[07:03, 5/7/2026] Otávio Bopp: Vou tentar implementar elas o mais rápido possível!
+[09:08, 5/7/2026] Tia Marilene: Eu tava bem em dúvida sobre o que fazer nessa caixa
+Não sei se vc continua em dúvida ou se já resolveu. Não necessariamente precisa aparecer
+[09:33, 5/7/2026] Otávio Bopp: Não sei se vc continua em dúvida ou se já resolveu. Não necessariamente precisa aparecer
+Ah
+[09:33, 5/7/2026] Otávio Bopp: Pq do jeito que ficou no word ficou bem melhor que no latex em pdf kkkk
+[09:34, 5/7/2026] Otávio Bopp: Ah
+[09:34, 5/7/2026] Otávio Bopp: Sobre o resumo
+[09:34, 5/7/2026] Otávio Bopp: Pelo que eu li no guia, eu posso sim ter dois paragrafos
+[09:35, 5/7/2026] Otávio Bopp: https://link.springer.com/journal/11127/submission-guidelines
+Aquu
+[09:35, 5/7/2026] Otávio Bopp: Deixa eu ver se eu acho onde falam disso
+[09:35, 5/7/2026] Otávio Bopp: Pelo que eu li no guia, eu posso sim ter dois paragrafos
+Mas de qualquer jeito sai do padrão padrão
+[09:35, 5/7/2026] Otávio Bopp: Tipo, eu tb tava no limite de palavras kkk
+[09:36, 5/7/2026] Tia Marilene: Pelo que eu li no guia, eu posso sim ter dois paragrafos
+Ah tá. É porque tradicionalmente não é costume de ter
+[09:36, 5/7/2026] Tia Marilene: Mas de qualquer jeito sai do padrão padrão
+Isso
+[09:38, 5/7/2026] Otávio Bopp: Mas enfim, vc notou que faltou colocar uns termos. Pelo que eu me lembro do guia, o correto é falar uma vez e usar a seguir. Não me lembro de precisar definir tudo numa seção específica.  Mas pode ser uma boa reformular o abstract
+[09:38, 5/7/2026] Otávio Bopp: Ah tá. É porque tradicionalmente não é costume de ter
+Pelo guia eles só pedem pra ter entre 150 e 250 palavras msm
+[09:39, 5/7/2026] Otávio Bopp: Então sei lá.  Achei que ficava melhor assim, mas as vezes é importante seguir a receita de bolo
+[09:39, 5/7/2026] Otávio Bopp: Ainda mais no primeiro artigo...
+[09:39, 5/7/2026] Otávio Bopp: Mas você sabe que eu odeio seguir receitas, kkkkk
+[09:44, 5/7/2026] Tia Marilene: Mas enfim, vc notou que faltou colocar uns termos. Pelo que eu me lembro do guia, o correto é falar uma vez e usar a seguir. Não me lembro de precisar definir tudo numa seção específica.  Mas pode ser uma boa reformular o abstract
+Achei q o Abstract estava legal
+[09:44, 5/7/2026] Tia Marilene: É no corpo do trabalho q define os termos à medida q vão aparecendo
+[09:46, 5/7/2026] Tia Marilene: Tbm gostei das têcnicas metodologicas, vc conseguiu explicar bem o q vc foi fazendo, é só acrescentar mesmo o tipo de pesquisa
+[09:48, 5/7/2026] Tia Marilene: Já a parte das análises quantitativa...é q não tive como acompanhar...essa terá q ser com seu professor mesmo
+[09:57, 5/7/2026] Tia Marilene: Ainda mais no primeiro artigo...
+E vc está de parabéns
+[10:05, 5/7/2026] Otávio Bopp: Já a parte das análises quantitativa...é q não tive como acompanhar...essa terá q ser com seu professor mesmo
+Ecometria!!!
+
+
+[11:41, 5/11/2026] Otávio Bopp: Então você achou que, no meu paper, faltou falar sbre a metodologia em econometria. Páigna 722 do journal, mas nesse pdf está na pagina 4. " O método desenvolvido neste trabalho parte..... O modelo econometrico adotado relaciona ...x... à luz da metodologia y.... a própria abordagem econometrica... pois permite permite que se possam fazer ineferencias e testes e de robustez dos reusltados obtidos... ao inves de se impor hipoteses nao testáveis"
+basicamente, você sentiu falta de eu mencionar mais "métodos econometricos", explicando suas  vantagens e desvantagens claramente
+[11:44, 5/11/2026] Tia Marilene: EStá bem escrito, isso mesmo, porém, gostaria de enfatizar q mais do q falar de vantagens e desvantagens de utilzar, isso seria um plus, o importante é explicar q utilizou isso e o q é isso
+[11:45, 5/11/2026] Otávio Bopp: legal. Vou mandar o paper original sobre esse assunto, onde meu professor foi o co-autor. Talvez tenha algo interessante pra gente olhar nesse sentido.
+[11:45, 5/11/2026] Otávio Bopp: Meu orientador reocmendou que, para um primeiro paper, ficasse algo bemm marroz com feijão mesmo. E pra eu tentar seguir a linha desse paper sempre que fosse razoável

@@ -9,6 +9,10 @@ __pycache__/
 .DS_Store
 Thumbs.db
 .vscode/
+.~lock.*
+.*.kate-swp
+*.swp
+*.swo
 
 # Local analysis outputs
 analysis/output/
