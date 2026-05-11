@@ -238,4 +238,25 @@ Em [`paper/latex/main_english.tex`](../paper/latex/main_english.tex#L107), no pa
 
 ---
 
+## 2026-05-11 (entrada 9) — #7 e #73 rejeitados (estilo Motoki/Public Choice)
+
+### Decisão: A — não mexer
+
+Otávio escolheu **manter intro e conclusão como estão**. #7 (parte "RQ") e #7 (parte "cortar antecipação de resultados") + #73 (mover resultados pra conclusão) — todos rejeitados.
+
+### Razões registradas
+
+1. **Motoki et al. também antecipa resultados na intro** ("we document robust evidence..."). É padrão Public Choice / economia, não erro de estilo.
+2. **Tia softenizou** o próprio comentário: "São só pontos a serem pensados, não necessariamente alterados".
+3. **Tia reconheceu** que era convenção da área dela ("Na minha área acho q não há o costume") — humanas, não economia.
+4. **C2 aplicado na entrada 8** já cobre parcialmente a parte de "RQ" — adicionou "três aims" + "dois eixos transversais" no intro.
+5. Conclusion atual já tem os resultados-chave (entrada 8 verificou); cortar do intro e mover causaria duplicação.
+
+### Status dos comentários
+
+- #7 ✗ **rejeitado** (RQ + cortar antecipação)
+- #73 ✗ **rejeitado** (contingente em #7)
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)
