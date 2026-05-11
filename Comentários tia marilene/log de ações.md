@@ -125,9 +125,61 @@ Otávio esclareceu o que era o "plano ainda mais amplo": é simplesmente **mante
 
 ### Pendências decorrentes
 
-- [ ] Criar snapshot histórico (PDF 11/05) das fontes atuais.
-- [ ] Commit dos arquivos novos (planos + log) no repositório.
-- [ ] Próxima sessão: começar pelo problema visual dos prompts (B4) ou pelos comentários — decidir com Otávio.
+- [x] ~~Criar snapshot histórico (PDF 11/05) das fontes atuais.~~ Feito (ver entrada 5).
+- [x] ~~Commit dos arquivos novos (planos + log) no repositório.~~ Feito (ver entrada 5).
+- [ ] Push para os remotes (origin e/ou paper-repo) — pendente confirmação do Otávio.
+- [ ] Próxima sessão: decidir os comentários substantivos juntos (Otávio escolheu).
+
+---
+
+## 2026-05-11 (entrada 5) — Snapshot histórico + commit "comita tudo sempre"
+
+A pedido do Otávio (regra forte: "COMITA TUDO SEMPRE, CARALHO, SEMPRE ALWAYS COMMIT EVERYTHING"):
+
+### Ações tomadas
+
+1. **Snapshot físico criado** em [`archive/snapshot_2026-05-11/`](../archive/snapshot_2026-05-11/):
+   - `paper_full_english.pdf`
+   - `paper_appendix_english.pdf`
+   - `paper_full_portuguese.pdf`
+2. **`.gitignore` atualizado** para excluir `.~lock.*` (LibreOffice), `.*.kate-swp`, `*.swp`, `*.swo`.
+3. **Commit em main** (`11caf2c`): "Add aunt's review materials, planning docs, and 2026-05-11 snapshot" — inclui pasta inteira `Comentários tia marilene/`, planos, log, snapshot, e o `.gitignore` atualizado. 10 arquivos.
+4. **Tag git anotada** criada: `snapshot-2026-05-11`, apontando para o commit acima, com mensagem "Historical snapshot of paper state before applying aunt Marilene's review edits".
+
+### Verificações
+
+- `git status` limpo após commit.
+- `git tag --list "snapshot*"` mostra `snapshot-2026-05-11`.
+- `git log -1` mostra o commit aplicado em main.
+
+### Regra capturada para o futuro
+
+**Sempre commitar tudo** que muda dentro de `/Vies_de_Genero_Paper/` a cada update. Não esperar permissão. Salvar como memória persistente.
+
+### Decisões pendentes
+
+- ~~Push?~~ Resolvido na entrada 6.
+
+---
+
+## 2026-05-11 (entrada 6) — Amend (sem trailer) + push para os dois remotes
+
+Otávio respondeu:
+- **Push para os dois remotes** (origin + paper-repo)
+- **Política futura**: sempre pushar para os dois após commit (regra salva em memória persistente)
+- **Co-Authored-By trailer**: tirar — commits limpos, no estilo do histórico do repo
+
+### Ações tomadas
+
+1. **`git commit --amend`** — removido o trailer `Co-Authored-By` do commit `11caf2c`. Novo hash: `096084f`.
+2. **Tag recriada** — `snapshot-2026-05-11` excluída e recriada apontando para o novo commit.
+3. **Push em `origin`**: `main` (70c3184..096084f) + tag `snapshot-2026-05-11`. OK.
+4. **Push em `paper-repo`**: `main` (70c3184..096084f) + tag `snapshot-2026-05-11`. OK.
+5. **Memória persistente atualizada**: `feedback_paper_repo_commits.md` agora cobre commit + push + sem-trailer.
+
+### Justificativa do `--amend`
+
+Normalmente eu evito amend (a regra do meu CLAUDE.md é "criar commits novos"). Mas neste caso era uma correção cosmética (remover trailer) sobre um commit ainda **não pushado**, então é seguro. Criar um commit "Remove trailer" sujaria o histórico sem motivo.
 
 ---
 
