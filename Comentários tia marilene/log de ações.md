@@ -183,4 +183,35 @@ Normalmente eu evito amend (a regra do meu CLAUDE.md é "criar commits novos"). 
 
 ---
 
+## 2026-05-11 (entrada 7) — Decisão sobre #6/#23 + correção no estilo de revisão cooperativa
+
+### Decisão registrada: #6 e #23 — REJEITADOS
+
+Otávio esclareceu que classificar pesquisa como qualitativa/quantitativa/quali-quanti é convenção da **área da tia (humanas)**, não comum em economia ou em Public Choice. Não vamos adicionar.
+
+- **Comentário #6** (tia, sobre "methodology" na intro): "Senti falta de mais algum termo técnico ligado à metodologia de pesquisa – isso poderia ser acrescentado (ex: pesquisa qualitativa; quantitativa; quali-quanti)."
+- **Comentário #23** (tia, sobre "present study"): "Vale o que coloquei acima de primeiro situar se será um estudo qualitativo ou quantitativo."
+- **Decisão**: NÃO implementar. Razão: o público-alvo (Public Choice / economia) não espera essa marcação. Tia também concordou via WhatsApp ("não tive como acompanhar") que a econometria está fora do escopo dela.
+
+### Erro do Claude registrado
+
+Apresentei as quatro questões substantivas (#5, #7, #73, #52) com **headers de 4 palavras + 1 frase de descrição por opção**, sem mostrar:
+
+- o texto atual do paper (citação literal)
+- como a edição concreta ficaria
+- prós/contras de cada opção
+- minha opinião explícita
+
+Otávio: "com esse pouco de informação (4 palavras) eu jamais vou saber o que responder. E como vc é uma ia, explicar te ajuda a dar respostas melhores, está na natureza das llms. Me ajude e eu te ajudo".
+
+Este é o **segundo problema do dia com presentation muito enxuta** (o primeiro foi pular para review sem criar os documentos). Padrão a corrigir: para decisões cooperativas, sempre incluir o texto atual citado + edição proposta concreta + reasoning. Vou salvar como feedback persistente.
+
+### Próximos passos
+
+- Apresentar #5 com contexto completo
+- Depois #7 + #73 juntos (ligados)
+- Depois #52 com motivação real
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)

@@ -73,14 +73,15 @@ Quando recomendações conflitarem, a ordem é:
 
 Decisão de cada um vai sendo registrada no log conforme passamos.
 
-| Bloco | Comentários | Natureza |
-|---|---|---|
-| Mecânicos | #0, #29, #30, #34 | Parágrafo do abstract, capitalização, acentos em prompts PT |
-| Figuras | #56, #61, #62 | Caption antes do gráfico + "Source: created by the authors" |
-| Citações/siglas | #3, #4, #24 | Expandir LLM/i.i.d.; nº de página em citação direta |
-| Substantivos | #5, #6, #7, #23, #52, #73 | Objetivos específicos; quali/quanti; pergunta de pesquisa; "Analyses and Results"; mover resultados |
-| Domínio técnico | #42 | Nota de rodapé sobre `temperature` |
-| Elogio | #12 | Nada a fazer |
+| Bloco | Comentários | Natureza | Status |
+|---|---|---|---|
+| Mecânicos | #0, #29, #30, #34 | Parágrafo do abstract, capitalização, acentos em prompts PT | pendente |
+| Figuras | #56, #61, #62 | Caption antes do gráfico + "Source: created by the authors" | pendente (conflito ABNT vs Springer) |
+| Citações/siglas | #3, #4, #24 | Expandir LLM/i.i.d.; nº de página em citação direta | pendente |
+| Substantivos | #5, #7, #52, #73 | Objetivos específicos; pergunta de pesquisa; "Analyses and Results"; mover resultados | pendente |
+| ~~Quali/quanti~~ | ~~#6, #23~~ | **REJEITADO** em 2026-05-11 — Otávio esclareceu que classificar pesquisa como quali/quanti é convenção de humanas, não comum em economia/Public Choice | rejeitado |
+| Domínio técnico | #42 | Nota de rodapé sobre `temperature` | pendente |
+| Elogio | #12 | Nada a fazer | n/a |
 
 ### B. Tarefas vindas da conversa do WhatsApp
 
