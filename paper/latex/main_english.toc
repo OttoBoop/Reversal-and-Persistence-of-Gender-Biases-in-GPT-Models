@@ -3,16 +3,16 @@
 \contentsline {section}{\numberline {2}Literature Review}{5}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Traditional biases}{5}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Mitigation Efforts and the Risk of Overcorrection}{6}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Application in résumé screening}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.3}Application in résumé screening}{7}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}Other cases of Bias in modern LLMs}{7}{subsection.2.4}%
 \contentsline {section}{\numberline {3}Methodology}{8}{section.3}%
 \setcounter {tocdepth}{2}
 \contentsline {subsection}{\numberline {3.1}General}{8}{subsection.3.1}%
 \contentsline {subsubsection}{\numberline {3.1.1}General Structure of the Completions Prompt}{9}{subsubsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.2}Test 1: presence of desirable characteristics}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}Test 1: presence of desirable characteristics}{10}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Prompts Used (chat models)}{10}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Prompts Used (completion models)}{11}{subsubsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.3}Test 2: Feedback Valence}{12}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Test 2: Feedback Valence}{13}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Prompts Used (chat models)}{13}{subsubsection.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}Prompts Used (completion models)}{14}{subsubsection.3.3.2}%
 \contentsline {subsubsection}{\numberline {3.3.3}Ordering Conditions}{15}{subsubsection.3.3.3}%
