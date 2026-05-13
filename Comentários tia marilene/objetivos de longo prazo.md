@@ -76,7 +76,7 @@ Decisão de cada um vai sendo registrada no log conforme passamos.
 | Bloco | Comentários | Natureza | Status |
 |---|---|---|---|
 | Mecânicos | ~~#0~~, ~~#29~~, ~~#30~~, ~~#34~~ | ~~#0: parágrafos abstract~~ (rejeitado, 229 palavras OK); ~~#29: capitalização~~ (Good Leadership); ~~#30/#34: acentos PT~~ (aplicados em 3 listings + lstset com literate) | ✓ feito |
-| Figuras | #56, #61, #62 | Caption antes do gráfico + "Source: created by the authors" | pendente (conflito ABNT vs Springer) |
+| Figuras | ~~#56, #61, #62~~ | Caption antes do gráfico + "Source: created by the authors" | ✗ rejeitados (hierarquia: Springer/Motoki põe caption ABAIXO e não exige "Source") |
 | Citações/siglas | #3, #4, #24 | Expandir LLM/i.i.d.; nº de página em citação direta | pendente |
 | Substantivos | ~~#5~~, ~~#7~~, ~~#52~~, ~~#73~~ | ~~#5: Objetivos específicos~~ (feito, C2); ~~#7: RQ+cortar resultados~~ (rejeitado); ~~#52: "Analyses and Results"~~ (rejeitado — Motoki também usa só "Results"); ~~#73: mover resultados~~ (rejeitado, contingente em #7) | #5 ✓; #7/#52/#73 ✗ |
 | ~~Quali/quanti~~ | ~~#6, #23~~ | **REJEITADO** em 2026-05-11 — Otávio esclareceu que classificar pesquisa como quali/quanti é convenção de humanas, não comum em economia/Public Choice | rejeitado |

@@ -318,4 +318,26 @@ Na Listing 3, "característica" quebrou em "caracter / ística" no PDF (linha ra
 
 ---
 
+## 2026-05-11 (entrada 12) — Bloco "Figuras" decidido pela hierarquia (sem alteração)
+
+### Decisão: #56, #61, #62 todos REJEITADOS
+
+Apliquei a hierarquia documentada (**Springer > Otávio > Motoki > Tia**) sem perguntar — Otávio explicitamente pediu para eu usar a hierarquia em vez de re-perguntar.
+
+### Verificação
+
+- **Springer (busca em 2026-05-11)**: para figuras criadas pelos autores, NÃO exige "Source: ..." (só para material previamente publicado). Sequência: Figure Number → Title → Caption.
+- **Motoki (PDF p.5, p.10, p.12, p.13, p.15)**: caption **abaixo** da figura ("Fig. 2 Political Compass quadrant—..."). Não usa "Source: ..." para figuras originais.
+- **Paper atual**: o `\caption{...}` vem **após** `\includegraphics{...}` no source — o que renderiza o caption ABAIXO da imagem (estilo Springer/Motoki). Sem "Source".
+
+### Conclusão
+
+- **#56** (Figure 1: caption above + Source) ✗ rejeitado — já no padrão Springer.
+- **#61** (Figure 5: idem) ✗ rejeitado — idem.
+- **#62** (Figure 6: idem) ✗ rejeitado — idem.
+
+**Nenhuma alteração no .tex necessária.** Sugestões da tia eram convenção ABNT (humanas/brasileira), que perde para Springer pela hierarquia.
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)
