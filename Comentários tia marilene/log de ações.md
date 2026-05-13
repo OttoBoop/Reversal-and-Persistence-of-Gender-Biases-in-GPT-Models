@@ -340,4 +340,52 @@ Apliquei a hierarquia documentada (**Springer > Otávio > Motoki > Tia**) sem pe
 
 ---
 
+## 2026-05-13 (entrada 13) — Sweep de siglas via Explore agent + 8 expansões aplicadas
+
+### Abordagem
+
+Otávio pediu para extender o tratamento de siglas além do que a tia mencionou (só LLM #3 e i.i.d. #24): aplicar a regra Springer ("definir na primeira menção no corpo, usar a sigla depois") a TODAS as siglas do paper. Sugestão dele: usar um agente para varrer sistematicamente.
+
+Despachei um Explore agent com prompt detalhado: varrer `main_english.tex` + `appendix.tex`, detectar siglas (`[A-Z]{2,}` + padrões tipo `i.i.d.`), identificar primeira ocorrência no corpo (depois de `\section{Introduction}`), verificar se há expansão por extenso a poucas palavras de distância, sugerir ação.
+
+### Resultado do agent
+
+21 siglas encontradas, organizadas em 3 grupos:
+
+**Grupo 1 — Aplicar (regra Springer clara, sem conflito com Motoki)**: 8 itens
+**Grupo 2 — Modelos GPT** (GPT-3/4/5, GPT-3.5, GPT-4o, o3, o4): Motoki não expande; convenção atual no campo é tratar como nome próprio. Recomendei NÃO mexer.
+**Grupo 3 — Nomes próprios** (COMPAS, PT em equações, MF/FM/M/F): nada a fazer.
+
+Otávio aprovou: aplicar Grupo 1, não tocar no Grupo 2.
+
+### 8 expansões aplicadas
+
+| Sigla | Arquivo:linha original | Mudança |
+|---|---|---|
+| LLM | main_english.tex:111 | "popularization of LLMs" → "popularization of Large Language Models (LLMs)" |
+| i.i.d. | main_english.tex:321 | "identically distributed random variables" → "independent and identically distributed (i.i.d.) random variables" |
+| BERT | main_english.tex:167 | "word representations in BERT" → "word representations in Bidirectional Encoder Representations from Transformers (BERT)" |
+| OLS | main_english.tex:719 | "linear regressions (OLS)" → "Ordinary Least Squares (OLS) linear regressions" |
+| API | main_english.tex:664 | "second API call" → "second Application Programming Interface (API) call" |
+| RLHF | main_english.tex:208 | "Reinforcement Learning from Human Feedback, where" → "Reinforcement Learning from Human Feedback (RLHF), where" |
+| EEOC | appendix.tex:229 | "U.S. legislation in EEOC, CM-625" → "U.S. legislation in Equal Employment Opportunity Commission (EEOC) document CM-625" |
+| ML | appendix.tex:148 | "Machine Learning models in general" → "Machine Learning (ML) models in general" |
+
+### Verificação
+
+- `latexmk -pdf -g main_english.tex`: OK (34 páginas, 1385742 bytes).
+- `latexmk -pdf -g appendix.tex`: OK (15 páginas, 329845 bytes).
+
+### Status
+
+- **#3** ✓ aplicado (LLM expansion no corpo)
+- **#24** ✓ aplicado (i.i.d. expansion)
+- Bônus: 6 outras expansões além do que tia listou.
+
+### Pendente neste sub-bloco
+
+- **#4** (Obermeyer página em citação direta) — ainda preciso descobrir a página específica da citação no Science 366.
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)

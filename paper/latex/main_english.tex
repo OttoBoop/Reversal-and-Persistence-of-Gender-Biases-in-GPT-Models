@@ -108,7 +108,7 @@ This study aims to evaluate how gender bias has evolved in some of the main mode
 \section{Introduction}
 
 
-Bias problems in artificial intelligence systems are not new and predate the popularization of LLMs. In 2016, Microsoft's Tay chatbot was taken offline after only 16 hours of operation for reproducing hate speech learned from users \citep{wolf2017}.
+Bias problems in artificial intelligence systems are not new and predate the popularization of Large Language Models (LLMs). In 2016, Microsoft's Tay chatbot was taken offline after only 16 hours of operation for reproducing hate speech learned from users \citep{wolf2017}.
 In 2018, Amazon discontinued a resume-screening tool for systematically penalizing female applicants \citep{dastin2018}. The
 COMPAS algorithm, used to predict the risk of criminal recidivism in the United States, was criticized for overestimating the risk presented by Black defendants \citep{angwin2016}. \citet{obermeyer2019} found that an algorithm to classify patients' health in the United States systematically underestimated the need for medical care for Black patients. The algorithm was not identified, with it only being stated that it was applied to approximately 200 million Americans every year. Regarding the origin of the disparity in care recommended to Black and white patients, \citeauthor{obermeyer2019} conclude:
 ``This bias arises because the algorithm predicts health costs and not illness, but unequal access to the health system means that less money is spent on Black patients''.
@@ -164,7 +164,7 @@ substantial differences in outcomes. The tests in our study seek to make
 similar modifications to prompts of models in the GPT family, and, through
 analysis of the generated texts, infer biases in the models,
 
-\citet{tan2019} analyzed word representations in BERT and
+\citet{tan2019} analyzed word representations in Bidirectional Encoder Representations from Transformers (BERT) and
 GPT-2, finding that words related to occupations are more
 strongly associated with pronouns corresponding to gender
 stereotypes. For example, \textit{nurse} shows greater vector similarity with
@@ -205,7 +205,7 @@ appeared with ``business'', ``career'' and ``salary''.
 Starting in 2022, with the release of ChatGPT, the leading
 LLM developers intensified efforts to mitigate discriminatory
 biases. The GPT-4 System Card \citep{openai2023} details the
-extensive use of Reinforcement Learning from Human Feedback, where
+extensive use of Reinforcement Learning from Human Feedback (RLHF), where
 human raters rank model outputs to guide its
 refinement.
 
@@ -318,7 +318,7 @@ generated characters.
 
 This approach is grounded in the probabilistic nature of LLMs: by
 asking a model to generate multiple stories with the same prompt,
-we obtain a set of identically distributed random variables,
+we obtain a set of independent and identically distributed (i.i.d.) random variables,
 and the behavior of these i.i.d. variables reveals the model's latent biases.
 The experimental structure is analogous to the classic experiment by
 \citet{bertrand2004}, where the only variation between fictional
@@ -661,7 +661,7 @@ Test 3 proceeds with the example orders MF, FM, M, F.
 \subsection{Gender Determination and Data Storage}
 
 
-After generating the texts, we made a second API call to
+After generating the texts, we made a second Application Programming Interface (API) call to
 determine the gender of the main characters in each story. For the
 three tests, gpt-4o-mini was used, with temperature set to 1.
 
@@ -716,7 +716,7 @@ explanatory variable ``Male'' (coded as 1) or ``Not Male''
 \subsection{Econometric Specification}
 
 
-For each test, we estimated linear regressions (OLS) with the following
+For each test, we estimated Ordinary Least Squares (OLS) linear regressions with the following
 general structure:
 
 \begin{equation}

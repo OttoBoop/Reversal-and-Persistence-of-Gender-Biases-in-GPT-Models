@@ -77,7 +77,7 @@ Decisão de cada um vai sendo registrada no log conforme passamos.
 |---|---|---|---|
 | Mecânicos | ~~#0~~, ~~#29~~, ~~#30~~, ~~#34~~ | ~~#0: parágrafos abstract~~ (rejeitado, 229 palavras OK); ~~#29: capitalização~~ (Good Leadership); ~~#30/#34: acentos PT~~ (aplicados em 3 listings + lstset com literate) | ✓ feito |
 | Figuras | ~~#56, #61, #62~~ | Caption antes do gráfico + "Source: created by the authors" | ✗ rejeitados (hierarquia: Springer/Motoki põe caption ABAIXO e não exige "Source") |
-| Citações/siglas | #3, #4, #24 | Expandir LLM/i.i.d.; nº de página em citação direta | pendente |
+| Citações/siglas | ~~#3~~, #4, ~~#24~~ | ~~#3 LLM~~ + ~~#24 i.i.d.~~ aplicados + 6 outras siglas expandidas (BERT, OLS, API, RLHF, EEOC, ML) via Explore-agent sweep; #4 (Obermeyer página) pendente | parcial: 8 expansões aplicadas, #4 pendente |
 | Substantivos | ~~#5~~, ~~#7~~, ~~#52~~, ~~#73~~ | ~~#5: Objetivos específicos~~ (feito, C2); ~~#7: RQ+cortar resultados~~ (rejeitado); ~~#52: "Analyses and Results"~~ (rejeitado — Motoki também usa só "Results"); ~~#73: mover resultados~~ (rejeitado, contingente em #7) | #5 ✓; #7/#52/#73 ✗ |
 | ~~Quali/quanti~~ | ~~#6, #23~~ | **REJEITADO** em 2026-05-11 — Otávio esclareceu que classificar pesquisa como quali/quanti é convenção de humanas, não comum em economia/Public Choice | rejeitado |
 | Domínio técnico | #42 | Nota de rodapé sobre `temperature` | pendente |
