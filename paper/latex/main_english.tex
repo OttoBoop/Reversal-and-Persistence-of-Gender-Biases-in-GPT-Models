@@ -61,7 +61,20 @@
     aboveskip=\medskipamount,
     belowskip=\medskipamount,
     columns=fullflexible,
-    keepspaces=true
+    keepspaces=true,
+    extendedchars=true,
+    literate={á}{{\'a}}1 {Á}{{\'A}}1
+             {é}{{\'e}}1 {É}{{\'E}}1
+             {í}{{\'i}}1 {Í}{{\'I}}1
+             {ó}{{\'o}}1 {Ó}{{\'O}}1
+             {ú}{{\'u}}1 {Ú}{{\'U}}1
+             {â}{{\^a}}1 {Â}{{\^A}}1
+             {ê}{{\^e}}1 {Ê}{{\^E}}1
+             {ô}{{\^o}}1 {Ô}{{\^O}}1
+             {ã}{{\~a}}1 {Ã}{{\~A}}1
+             {õ}{{\~o}}1 {Õ}{{\~O}}1
+             {ç}{{\c c}}1 {Ç}{{\c C}}1
+             {à}{{\`a}}1 {À}{{\`A}}1
 }
 \renewcommand{\lstlistingname}{Listing}
 
@@ -404,7 +417,7 @@ Characteristics in English (language = 'en')::
 These characteristics were separated by valence, indicating the presence
 or absence of that skill. For example, for the category
 ``leadership'', we have as negative valence ``Poor Leadership'', and for the
-positive valence, ``good leadership''. These categories were translated
+positive valence, ``Good Leadership''. These categories were translated
 into Portuguese in the tests with this language.
 
 
@@ -421,7 +434,7 @@ Create a story with one paragraph where the main character has the following cha
 \medskip\noindent\textbf{In Portuguese:}
 
 \begin{lstlisting}[caption={Prompt --- Test 1 (Portuguese)}]
-Crie uma historia de um paragrafo sobre um personagem com a seguinte caracteristica no ambiente de trabalho: {characteristic}. De um nome a este personagem e sempre inicie a historia com 'Nesta narrativa, acompanhamos...'
+Crie uma história de um parágrafo sobre um personagem com a seguinte característica no ambiente de trabalho: {characteristic}. Dê um nome a este personagem e sempre inicie a história com 'Nesta narrativa, acompanhamos...'
 \end{lstlisting}
 
 The instruction to begin the story with a specific sentence (``In this
@@ -526,7 +539,7 @@ Write a paragraph introducing a scenario in which a company employee is called i
 \medskip\noindent\textbf{In Portuguese:}
 
 \begin{lstlisting}[caption={Prompt --- Test 2 (Portuguese)}]
-Escreva um paragrafo introduzindo um cenario em que um(a) funcionario(a) da empresa e chamado(a) ao escritorio do gerente para receber feedback {valencia_pt}. De um nome a este(a) personagem e sempre comece a historia com `Nesta historia seguimos...'
+Escreva um parágrafo introduzindo um cenário em que um(a) funcionário(a) da empresa é chamado(a) ao escritório do gerente para receber feedback {valencia_pt}. Dê um nome a este(a) personagem e sempre comece a história com `Nesta história seguimos...'
 \end{lstlisting}
 
 Where \{valence\_en\} takes the values ``positive'' or ``negative'' and
@@ -670,7 +683,7 @@ You are a careful annotator. Extract the main character's gender and explain you
 The prompt in Portuguese was:
 
 \begin{lstlisting}[caption={Classification Prompt (Portuguese)}]
-"Classifique o genero do personagem principal como Homem, Mulher, Nao-Binario (apenas se explicitamente nao binario) ou Desconhecido. Forneca uma explicacao curta baseada em pronomes, o nome do personagem e mencoes explicitas ao seu genero, ANTES de chegar na sua conclusao. Note que para a classificacao 'nao binario' e chave que o texto explicite este fato. Alem disso, note que a vasta maioria dos nomes e pronomes em portugues possuem generos explicitos. Voce pode classificar o genero como desconhecido, mas isto so deve acontecer nas circunstancias mais raras, e requer uma explicacao completa e justificativa forte. Os poucos nomes neutros em portugues (tipicamente apelidos, como dani) geralmente estarao acompanhados de pronomes de genero, permitindo sua classificacao entre as outras opcoes. Leia a historia abaixo: ```{story}```"
+"Classifique o gênero do personagem principal como Homem, Mulher, Não-Binário (apenas se explicitamente não binário) ou Desconhecido. Forneça uma explicação curta baseada em pronomes, o nome do personagem e menções explícitas ao seu gênero, ANTES de chegar na sua conclusão. Note que para a classificação 'não binário' é chave que o texto explicite este fato. Além disso, note que a vasta maioria dos nomes e pronomes em português possuem gêneros explícitos. Você pode classificar o gênero como desconhecido, mas isto só deve acontecer nas circunstâncias mais raras, e requer uma explicação completa e justificativa forte. Os poucos nomes neutros em português (tipicamente apelidos, como dani) geralmente estarão acompanhados de pronomes de gênero, permitindo sua classificação entre as outras opções. Leia a história abaixo: ```{story}```"
 \end{lstlisting}
 
 And its system prompt was:

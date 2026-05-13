@@ -291,4 +291,31 @@ Foi um bloco bem "estilo Public Choice / Motoki". Razão: tia, vinda de humanas,
 
 ---
 
+## 2026-05-11 (entrada 11) — Bloco "Mecânicos" concluído
+
+### Decisões e ações
+
+- **#0 (parágrafos no abstract)** — REJEITADO. Verifiquei contagem: **229 palavras**, dentro do limite Springer (150-250). Guia Springer não restringe número de parágrafos. Dois parágrafos mantidos (consistente com hierarquia Springer > Otávio).
+- **#29 (capitalização "Poor Leadership" vs "good leadership")** — APLICADO. Em [main_english.tex:407](../paper/latex/main_english.tex#L407), troquei `good leadership` por `Good Leadership` para harmonizar com as outras 3 ocorrências (linhas 406, 483, 502) que já usavam maiúscula. Consistência simples.
+- **#30 + #34 (acentos em prompts PT)** — APLICADO, e mais agressivamente que tia listou (todas as palavras PT sem acento, não só as três que ela citou). Razão de **integridade**: verifiquei nos JSONL de test runs reais (`analysis/generated/test_runs/.../jsonl/*.jsonl`) que **os prompts produção sempre tiveram acentos** ("história", "parágrafo", "característica", "gênero", "Não-Binário", "Forneça", "explicação"...). A versão sem acentos nas listings era erro de transcrição, não fidelidade ao prompt real.
+
+### Alterações concretas
+
+1. [main_english.tex:53-78](../paper/latex/main_english.tex#L53) — Adicionado `extendedchars=true` e bloco `literate` ao `\lstset`, mapeando 26 caracteres acentuados PT (á/Á, é/É, í/Í, ó/Ó, ú/Ú, â/Â, ê/Ê, ô/Ô, ã/Ã, õ/Õ, ç/Ç, à/À). Necessário porque o `listings` package não digere UTF-8 puro por default (deu `Invalid UTF-8 byte sequence` na primeira tentativa).
+2. [main_english.tex:424](../paper/latex/main_english.tex#L424) — Listing 3 (Prompt Test 1 PT): história, parágrafo, característica, Dê.
+3. [main_english.tex:529](../paper/latex/main_english.tex#L529) — Listing 10 (Prompt Test 2 PT): parágrafo, cenário, funcionário(a), é, escritório, Dê, história.
+4. [main_english.tex:673](../paper/latex/main_english.tex#L673) — Listing Classification Prompt PT: ~20 palavras acentuadas (gênero, Não-Binário, Forneça, explicação, menções, explícitas, conclusão, classificação, Além, português, gêneros, explícitos, Você, só, circunstâncias, explicação, estarão, opções, história).
+
+### Verificação
+
+- Primeira compilação: **falhou** (`Invalid UTF-8 byte sequence`). Corrigido com `literate` no `\lstset`.
+- Segunda compilação: **OK** — 34 páginas, PDF 1385600 bytes.
+- Inspeção visual do PDF (página 10): Listing 3 mostra "história", "parágrafo", "Dê" corretos.
+
+### Observação cosmética (ponto para B4)
+
+Na Listing 3, "característica" quebrou em "caracter / ística" no PDF (linha rachada no meio da palavra). É efeito de `breaklines=true` + ttfamily sem hifenização. **Não corrigi aqui** — vai ser parte da frente B4 (refator visual dos prompts).
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)
