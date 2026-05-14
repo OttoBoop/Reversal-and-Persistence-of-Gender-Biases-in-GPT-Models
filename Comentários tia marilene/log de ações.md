@@ -620,4 +620,28 @@ Total de commits nesta sessão (11/05–14/05): 11 commits. Paper passou de 34 �
 
 ---
 
+## 2026-05-14 (entrada 19) — Refresh dos PDFs na raiz
+
+Otávio notou que `paper_full_english.pdf` e `paper_appendix_english.pdf` na raiz do repo continuavam de 12/04 (estagnados). Não tinha Makefile/script de cópia; era cópia manual.
+
+### Ação
+
+```bash
+cp paper/latex/main_english.pdf paper_full_english.pdf
+cp paper/latex/appendix.pdf paper_appendix_english.pdf
+```
+
+`paper_full_portuguese.pdf` na raiz NÃO foi atualizado (PT está adiada per plano D).
+
+### Status
+
+- PDFs na raiz agora refletem o conteúdo `paper/latex/` pós-revisão.
+- Commit + push nos dois remotes.
+
+### Pendência
+
+- Considerar criar Makefile/build.sh pra evitar esse drift de novo. Não fiz agora — Otávio mencionou no menu mas pediu só "copia agora".
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)
