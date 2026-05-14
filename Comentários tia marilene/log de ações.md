@@ -572,4 +572,52 @@ Em [main_english.tex:53-78](../paper/latex/main_english.tex#L53):
 
 ---
 
+## 2026-05-14 (entrada 18) — Auditoria de citações diretas: concluída, sem novos achados
+
+A pendência da entrada 14 (depois do fix #4 do Obermeyer) era varrer o resto do paper procurando outras citações entre aspas que pudessem ser paráfrases (não verbatim) — o tipo de problema que existia no #4 antes da correção.
+
+### Método
+
+`grep -n "\`\`[^']*''" main_english.tex appendix.tex` listou todos os usos de aspas duplas tipográficas no LaTeX. Analisei cada ocorrência manualmente.
+
+### Categorização dos achados
+
+A varrida encontrou ~25 ocorrências de aspas tipográficas. Categorias:
+
+1. **Citação direta de frase de fonte externa** — 1 caso, ÚNICO: Obermeyer 2019 (já corrigido na entrada 14).
+2. **Termos/labels importados de autor** (ex.: "High Power"/"Low Power" de Lucy & Bamman 2021, "Bias Unlearn"/"unlearning" de Liu 2025, "few-shots" de Brown et al. 2020) — uso correto. Aspas marcam que o termo vem do autor citado, não precisa página.
+3. **Scare quotes internas** ("biased", "debiasing", "chat"-type, "completion"-type, "Unknown", "Male", "Not Male") — nossa própria terminologia ou marcações conceituais.
+4. **Valores de parâmetros e símbolos de prompt** ("positive", "negative", "office worker", "Good Leadership", "Poor Leadership", "###", system roles tipo "You are a creative writer") — conteúdo interno do experimento.
+5. **Termos legais ou de área** ("protected classes" no apêndice) — terminologia técnica padrão.
+
+### Conclusão
+
+**Nenhuma outra frase-completa de fonte externa entre aspas foi encontrada.** O caso Obermeyer era único. Não há fixes adicionais a aplicar nesta auditoria.
+
+### Limitação registrada
+
+- A auditoria foi feita sobre o uso de aspas tipográficas no `.tex`. **Não verifiquei se há paráfrases SEM aspas que mereceriam citação com página** (ex.: trechos copiados quase-verbatim sem marcação). Isso requereria comparar trechos do paper contra cada fonte primária, o que é trabalho muito maior. Registro como pendência genérica caso o orientador queira aprofundar.
+
+### Status
+
+- Auditoria de citações diretas ✓ concluída.
+
+---
+
+## 2026-05-14 — Resumo final da rodada autônoma
+
+Otávio sinalizou em 13/05 à noite: "vou dormir, termina tudo num loop, não tenho que te falar por onde começar". A partir daí trabalhei nas três frentes pendentes:
+
+| Frente | Status | Onde / como |
+|---|---|---|
+| B1 — econometria | ✓ aplicado | 2 parágrafos no topo de §3.6, citando Motoki como modelo |
+| B4 — visual prompts | ✓ aplicado | Tune do `\lstset` existente (breakatwhitespace, padding compacto, footnotesize) |
+| Auditoria de citações diretas | ✓ concluída sem novos achados | Único caso era Obermeyer (já fixed em entrada 14) |
+
+**Os 18 comentários da tia + 4 frentes do WhatsApp**: todos endereçados. Todas as edições commitadas e pushadas em `origin` (Vies_de_Genero_Paper) e `paper-repo` (Reversal-and-Persistence-of-Gender-Biases-in-GPT-Models).
+
+Total de commits nesta sessão (11/05–14/05): 11 commits. Paper passou de 34 → 35 → 34 páginas com as adições + a compactação dos listings.
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)
