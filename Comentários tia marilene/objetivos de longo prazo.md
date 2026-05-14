@@ -80,7 +80,7 @@ Decisão de cada um vai sendo registrada no log conforme passamos.
 | Citações/siglas | ~~#3~~, ~~#4~~, ~~#24~~ | ~~#3 LLM~~ + ~~#24 i.i.d.~~ + 6 outras siglas (BERT/OLS/API/RLHF/EEOC/ML); ~~#4 Obermeyer~~: citação corrigida para verbatim + página 447 | ✓ feito |
 | Substantivos | ~~#5~~, ~~#7~~, ~~#52~~, ~~#73~~ | ~~#5: Objetivos específicos~~ (feito, C2); ~~#7: RQ+cortar resultados~~ (rejeitado); ~~#52: "Analyses and Results"~~ (rejeitado — Motoki também usa só "Results"); ~~#73: mover resultados~~ (rejeitado, contingente em #7) | #5 ✓; #7/#52/#73 ✗ |
 | ~~Quali/quanti~~ | ~~#6, #23~~ | **REJEITADO** em 2026-05-11 — Otávio esclareceu que classificar pesquisa como quali/quanti é convenção de humanas, não comum em economia/Public Choice | rejeitado |
-| Domínio técnico | #42 | Nota de rodapé sobre `temperature` | pendente |
+| Domínio técnico | ~~#42~~ | Footnote curto sobre `temperature` na primeira menção (linha 666) + label em §3.7 para xref | ✓ feito |
 | Elogio | #12 | Nada a fazer | n/a |
 
 ### B. Tarefas vindas da conversa do WhatsApp

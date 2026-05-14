@@ -437,4 +437,41 @@ O fix da citação não foi só "adicionar página". Foi corrigir uma paráfrase
 
 ---
 
+## 2026-05-13 (entrada 15) — #42 aplicado: footnote explicando `temperature`
+
+### Decisão
+
+Otávio escolheu **B** (footnote curto na primeira menção). Argumento: ataca exatamente onde a tia apontou, mínima invasão no fluxo do texto.
+
+### Edição aplicada
+
+Em [main_english.tex:666](../paper/latex/main_english.tex#L666):
+
+```diff
+-three tests, gpt-4o-mini was used, with temperature set to 1.
++three tests, gpt-4o-mini was used, with temperature set to 1.\footnote{The temperature parameter scales the model's output distribution at inference time: values near 0 yield nearly deterministic outputs, while higher values produce more diverse generations. Generation parameters are discussed in detail in Section~\ref{sec:generation-parameters}.}
+```
+
+Adicionei também o label `\label{sec:generation-parameters}` em §3.7 ([main_english.tex:814](../paper/latex/main_english.tex#L814)) para o `\ref` resolver corretamente.
+
+### Verificação
+
+- `latexmk -pdf -g`: OK (35 páginas, 1395705 bytes — uma página a mais que antes do footnote).
+- PDF p.17 lido: footnote rendeu corretamente com superscript "¹" e texto na base. Section 3.7 resolveu para o número certo.
+
+### Observação cosmética (mais um ponto pra B4)
+
+A página 17 ficou estranha: "gpt-4o-mini was used, with temperature set to 1.¹" no topo, depois um vazio enorme. Provavelmente um `\newpage` ou layout-quebra antes do bloco de prompts (página 18 começa com "The prompt in English was:" + listings). É mais um candidato pra atacar na frente B4 junto com a hifenização das listings.
+
+### Status
+
+- **#42** ✓ aplicado.
+- **Bloco "Técnico" CONCLUÍDO**.
+
+### Pendência registrada
+
+- B4: layout-quebra antes dos prompts (p.17 com vazio) + hifenização das listings.
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)

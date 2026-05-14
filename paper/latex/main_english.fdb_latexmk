@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main_english"] 1778717300.343 "main_english.aux" "main_english.bbl" "main_english" 1778717303.12061 0
+["bibtex main_english"] 1778717158.42766 "main_english.aux" "main_english.bbl" "main_english" 1778717161.1735 0
   "./referencias.bib" 1775480503.81695 11749 da368b547959b5caf744c4aa9a71cbe0 ""
   "/usr/share/texmf-dist/bibtex/bst/base/apalike.bst" 1775415801 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "main_english.aux" 1778717302.97118 15220 908f838b3e3d7440849ff1a64b047051 "pdflatex"
+  "main_english.aux" 1778717161.02911 15309 016e8178f6aff5782ffbc2569439f8df "pdflatex"
   (generated)
   "main_english.bbl"
   "main_english.blg"
   (rewritten before read)
-["pdflatex"] 1778717300.36417 "main_english.tex" "main_english.pdf" "main_english" 1778717303.12086 0
+["pdflatex"] 1778717158.44705 "main_english.tex" "main_english.pdf" "main_english" 1778717161.17367 0
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1775415801 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1775415801 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbi1200.tfm" 1775415801 3072 ccae1a240ab272417e4399fe942df546 ""
@@ -15,6 +15,7 @@
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm" 1775415801 3584 13049b61b922a28b158a38aeff75ee9b ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1728.tfm" 1775415801 3584 ad49a18d8515beef6d92d4d3f197d0fd ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0600.tfm" 1775415801 3584 291a5713401683441e0a8c8f4417b17b ""
+  "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0700.tfm" 1775415801 3584 cf973739aac7ab6247f9150296af7954 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0800.tfm" 1775415801 3584 49064b465390a8e316a3c8417a050403 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1775415801 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1775415801 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
@@ -67,6 +68,8 @@
   "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb" 1775415801 140176 d4962f948b4cc0adf4d3dde77a128c95 ""
   "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb" 1775415801 135942 859a90cad7494a1e79c94baf546d7de5 ""
   "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb" 1775415801 139826 9213617a7cb78635fc326b859c0b2273 ""
+  "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb" 1775415801 154599 ded6d7c21788a8930eadc7fef7518942 ""
+  "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb" 1775415801 164227 3df942b4ff2124425d8fb1b6d3e01c7a ""
   "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb" 1775415801 138258 6525c253f16cededa14c7fd0da7f67b2 ""
   "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb" 1775415801 136101 f533469f523533d38317ab5729d00c8a ""
   "/usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb" 1775415801 131078 d96015a2fa5c350129e933ca070b2484 ""
@@ -157,11 +160,11 @@
   "figuras_final/image7.png" 1775480503.81535 86803 26a14864ba7c877640f65950fb4cbe07 ""
   "figuras_final/image8.png" 1775480503.81656 88922 b1fe7aaab3fe250bb547d1195aa4ca28 ""
   "figuras_final/image9.png" 1775480503.81695 92238 77ad7074f7edd85a64cf591f19150bb5 ""
-  "main_english.aux" 1778717302.97118 15220 908f838b3e3d7440849ff1a64b047051 "pdflatex"
-  "main_english.bbl" 1778717300.36118 5185 7cd3e735263a6f70aa4072e0691e30f6 "bibtex main_english"
-  "main_english.out" 1778717302.97318 7622 1f6b4a94c3f6b470425fdcd62f4dd252 "pdflatex"
-  "main_english.tex" 1778717288.77818 61867 9b2c75f31202db410f97b6bc2e85ee72 ""
-  "main_english.toc" 1778717302.97318 3787 489a49dc6b26dccc7317e82154c7a208 "pdflatex"
+  "main_english.aux" 1778717161.02911 15309 016e8178f6aff5782ffbc2569439f8df "pdflatex"
+  "main_english.bbl" 1778717158.44211 5185 7cd3e735263a6f70aa4072e0691e30f6 "bibtex main_english"
+  "main_english.out" 1778717161.03111 7622 1f6b4a94c3f6b470425fdcd62f4dd252 "pdflatex"
+  "main_english.tex" 1778717147.96811 62188 4aade92a1541d697a00627404e876bc7 ""
+  "main_english.toc" 1778717161.03111 3787 1f838f5bb8d8e06e5ca2bf0862c031f2 "pdflatex"
   (generated)
   "main_english.aux"
   "main_english.log"

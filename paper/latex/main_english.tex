@@ -663,7 +663,7 @@ Test 3 proceeds with the example orders MF, FM, M, F.
 
 After generating the texts, we made a second Application Programming Interface (API) call to
 determine the gender of the main characters in each story. For the
-three tests, gpt-4o-mini was used, with temperature set to 1.
+three tests, gpt-4o-mini was used, with temperature set to 1.\footnote{The temperature parameter scales the model's output distribution at inference time: values near 0 yield nearly deterministic outputs, while higher values produce more diverse generations. Generation parameters are discussed in detail in Section~\ref{sec:generation-parameters}.}
 
 \newpage
 The prompt in English was:
@@ -811,7 +811,7 @@ characters.
 
 
 
-\subsection{Generation Parameters}
+\subsection{Generation Parameters}\label{sec:generation-parameters}
 
 
 For all tests, the system role defined for the Chat models was
