@@ -51,15 +51,21 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \lstset{
-    basicstyle=\ttfamily\small,
+    basicstyle=\ttfamily\footnotesize,
     breaklines=true,
+    breakatwhitespace=true,
+    breakindent=0pt,
     frame=single,
+    framesep=4pt,
+    framerule=0.4pt,
     backgroundcolor=\color{gray!8},
-    rulecolor=\color{gray!60},
-    xleftmargin=8pt,
-    xrightmargin=8pt,
-    aboveskip=\medskipamount,
-    belowskip=\medskipamount,
+    rulecolor=\color{gray!50},
+    xleftmargin=10pt,
+    xrightmargin=10pt,
+    aboveskip=4pt,
+    belowskip=4pt,
+    abovecaptionskip=2pt,
+    belowcaptionskip=2pt,
     columns=fullflexible,
     keepspaces=true,
     extendedchars=true,
@@ -713,11 +719,29 @@ explanatory variable ``Male'' (coded as 1) or ``Not Male''
 (coded as 0).
 
 
-\subsection{Econometric Specification}
+\subsection{Econometric Specification}\label{sec:econometric-specification}
 
 
-For each test, we estimated Ordinary Least Squares (OLS) linear regressions with the following
-general structure:
+We adopt Ordinary Least Squares (OLS) linear regression as our main analytical
+tool for two reasons. First, regression isolates the effect of each
+experimentally manipulated treatment --- the desirable characteristic in Test
+1, the valence of supervisor feedback in Test 2, and the occupational power
+level in Test 3 --- from confounders such as the specific model in use, the
+language of the prompt, and, for completion models, the order of examples in
+the few-shot context. Second, the regression framework supports standard
+statistical inference and enables the robustness checks reported in the
+appendix.
+
+Because our outcome variable is binary (whether the generated character is
+male), the linear-probability formulation yields coefficients that map directly
+to differences in probabilities. A $\beta_1$ of $-0.61$ in the
+desirable-characteristics test, for instance, indicates that switching the
+prompt from a negative to a positive valence reduces the probability of
+generating a male character by 61 percentage points, all else equal. This
+econometric approach follows that of \citet{motoki2024} in their study of
+political bias in large language models.
+
+For each test, the OLS regression takes the following general structure:
 
 \begin{equation}
 \text{is\_male} = \alpha + \beta_1(\text{treatment}) + \Sigma\gamma(\text{controls}) + \varepsilon

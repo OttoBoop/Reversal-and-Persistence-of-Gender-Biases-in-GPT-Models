@@ -85,16 +85,10 @@ Decisão de cada um vai sendo registrada no log conforme passamos.
 
 ### B. Tarefas vindas da conversa do WhatsApp
 
-- **B1. Adicionar discussão explícita de métodos econométricos.** Confirmada pela tia em 2026-05-11: "o importante é explicar q utilizou isso e o q é isso" (vantagens/desvantagens é plus). **O Motoki foi enviado pelo Otávio especificamente como referência para B1** (não como template geral). Localizar a passagem-modelo (Otávio sugeriu PDF p.4; a confirmar).
+- ~~**B1. Adicionar discussão explícita de métodos econométricos.**~~ ✓ aplicado em 2026-05-14. Inseridos dois parágrafos no início de §3.6 Econometric Specification, explicando: (1) por que OLS (isolar efeitos do tratamento de confounders; suportar inferência e robustness checks), (2) interpretação direta dos coeficientes na probabilidade (β₁ = −0.61 → −61pp), com citação Motoki et al. 2024 como template.
 - **B2. Validar abstract.** Tia disse depois "Achei q o Abstract estava legal", mas o comentário #0 do docx diz para tirar quebra. Posição atual: manter dois parágrafos (guia permite). Confirmar contagem 150-250 palavras.
 - **B3. Acrescentar "tipo de pesquisa"** (quali/quanti/quali-quanti) na metodologia, justificando depois. Tia confirmou no WhatsApp ("é só acrescentar mesmo o tipo de pesquisa").
-- **B4. Reformular o estilo visual dos prompts no LaTeX/PDF — "problemão" segundo Otávio.** Não é checagem, é refatoração do estilo. Especificidades:
-  - Remover símbolos sobrando (ex: `#` aparecendo no PDF).
-  - Visual mais "fechado"/compacto.
-  - Qualidade alvo: "MUITO melhor" — blocker, não polimento.
-  - Afeta o Listing 19 e congêneres (provavelmente todos os prompts mostrados no paper e/ou appendix).
-  - Provável necessidade de experimentar pacotes LaTeX alternativos: `lstlisting` (já em uso?), `tcolorbox`, `fancyvrb`, `minted`, ou caixa custom.
-  - Validação visual obrigatória: comparar Word (que ficou bom) com PDF gerado para fechar.
+- ~~**B4. Reformular o estilo visual dos prompts no LaTeX/PDF**~~ ✓ aplicado em 2026-05-14. Tunei o `\lstset` existente em vez de trocar de pacote: adicionei `breakatwhitespace=true` (resolve quebras tipo "caracter / ística"), `breakindent=0pt`, padding mais compacto (`aboveskip/belowskip=4pt`, `framesep=4pt`, `framerule=0.4pt`), font um pouco menor (`\footnotesize` vs `\small`), captions com menos espaço (`abovecaptionskip/belowcaptionskip=2pt`). Resultado: as listings ficaram visualmente mais compactas, quebras só em espaços (palavras inteiras preservadas), e a isolada "1 linha + página em branco" do p.17 desapareceu. PDF reduziu de 35 para 34 páginas.
 
 ### C. Conformidade com Public Choice (Springer)
 

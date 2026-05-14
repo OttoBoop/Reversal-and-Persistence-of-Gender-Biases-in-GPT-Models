@@ -474,4 +474,102 @@ A página 17 ficou estranha: "gpt-4o-mini was used, with temperature set to 1.¹
 
 ---
 
+## 2026-05-14 (entrada 16) — B1 aplicado: discussão de métodos econométricos no §3.6
+
+Otávio sinalizou na noite de 13/05 ("vou dormir, termina tudo num loop") que eu deveria trabalhar autonomamente nas frentes B1 e B4. Esta entrada é o resultado da rodada autônoma para B1.
+
+### Decisão de localização
+
+Inseri o material no início de §3.6 (`Econometric Specification`), **antes** das equações já existentes. Razão: a tia/Otávio queriam moldura de alto nível ("o importante é explicar q utilizou isso e o q é isso", WhatsApp 11/05); a seção já tinha as equações mas pulava direto pra "For each test, we estimated OLS..." sem dizer por quê. A moldura natural vai no topo da própria seção.
+
+Adicionei também `\label{sec:econometric-specification}` para futura referência cruzada.
+
+### Texto inserido
+
+Dois parágrafos:
+
+1. **Por que OLS** — "isolates the effect of each experimentally manipulated treatment ... from confounders such as the specific model in use, the language of the prompt, and, for completion models, the order of examples in the few-shot context. Second, the regression framework supports standard statistical inference and enables the robustness checks reported in the appendix."
+
+2. **Interpretação direta** — "Because our outcome variable is binary..., the linear-probability formulation yields coefficients that map directly to differences in probabilities. A β₁ of −0.61 in the desirable-characteristics test, for instance, indicates that switching the prompt from a negative to a positive valence reduces the probability of generating a male character by 61 percentage points, all else equal. This econometric approach follows that of `\citet{motoki2024}` in their study of political bias in large language models."
+
+Limpeza: a frase seguinte ("For each test, we estimated Ordinary Least Squares (OLS) linear regressions...") foi enxugada para "For each test, the OLS regression takes the following general structure:" — removeu a redundância de "OLS" e "Ordinary Least Squares" mencionados duas vezes em sequência.
+
+### Verificação
+
+- `latexmk -pdf -g main_english.tex`: OK.
+- Citation `\citet{motoki2024}` resolveu (já está no `referencias.bib`, 0 warnings).
+- PDF p.18 (após o refactor B4) mostra a inserção no topo de §3.6 — render limpo, citação rendeu como "MOTOKI et al. (2024)".
+
+### Observação metodológica
+
+Otávio sugeriu antes a "página 722" do journal como referência exata no Motoki. Esse número não bate com o paper que temos (Public Choice 198:3-23). Não consegui localizar exatamente a página, mas o material que escrevi reflete o espírito do que o Motoki faz em §3 e §4.2 — moldura econométrica antes da equação, depois interpretação dos coeficientes. Se o Otávio tinha em mente uma passagem específica, posso refinar quando ele revisar.
+
+---
+
+## 2026-05-14 (entrada 17) — B4 aplicado: refator visual dos prompts via tune do `\lstset`
+
+### Abordagem
+
+Em vez de trocar de pacote (`tcolorbox`, `fancyvrb`, `minted`), optei por **tunar o `\lstset` existente**. Razões:
+- Menor mudança de código → menor risco de quebra
+- O `listings` já estava configurado com o `literate` para acentos PT (entrada 11)
+- Os problemas observados (quebras em meio de palavra, padding generoso, font um pouco grande) tinham fixes diretos no próprio `\lstset`
+
+### Mudanças aplicadas
+
+Em [main_english.tex:53-78](../paper/latex/main_english.tex#L53):
+
+```diff
+ \lstset{
+-    basicstyle=\ttfamily\small,
++    basicstyle=\ttfamily\footnotesize,
+     breaklines=true,
++    breakatwhitespace=true,
++    breakindent=0pt,
+     frame=single,
++    framesep=4pt,
++    framerule=0.4pt,
+     backgroundcolor=\color{gray!8},
+-    rulecolor=\color{gray!60},
++    rulecolor=\color{gray!50},
+-    xleftmargin=8pt,
+-    xrightmargin=8pt,
++    xleftmargin=10pt,
++    xrightmargin=10pt,
+-    aboveskip=\medskipamount,
+-    belowskip=\medskipamount,
++    aboveskip=4pt,
++    belowskip=4pt,
++    abovecaptionskip=2pt,
++    belowcaptionskip=2pt,
+     columns=fullflexible,
+     keepspaces=true,
+     ...
+}
+```
+
+### Efeitos observados no PDF (após recompile)
+
+- **Quebras em palavras**: "característica" agora cabe inteira numa linha (p.10, Listing 3). Antes: "caracter / ística".
+- **Isolamento da p.17**: a linha solta "gpt-4o-mini was used, with temperature set to 1.¹" no topo de uma página vazia desapareceu. Agora a frase + footnote ficam na p.16 junto com Listings 16 e 17.
+- **Compactação**: todas as listings ficaram mais densas. Página total reduziu de 35 → 34 mesmo com B1 adicionando dois parágrafos.
+- **Listing 19** (Classification PT): wraps cleanly at word boundaries — "menções explícitas ao seu", "classificação 'não", "Você pode", etc. Visual fluido.
+
+### Pendências ainda no escopo de B4 (mas baixa prioridade)
+
+- O `#` (delimiter `###` nos completion prompts) continua aparecendo — é PARTE do prompt real, não detrito, então não removi. Pode revisitar se Otávio quiser ocultar via macro.
+- Não experimentei `tcolorbox` etc. Se o tune actual ainda não atender, fica registrado como fallback.
+
+### Verificação
+
+- `latexmk -pdf -g`: OK (34 páginas, 1396356 bytes).
+- PDF pp. 10, 11, 16, 17, 18 lidos — visualmente OK.
+
+### Status
+
+- **B1** ✓ aplicado.
+- **B4** ✓ aplicado (versão "tune do lstset"; B4 fica como "feito" mas com porta aberta para refator mais radical se necessário).
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)
