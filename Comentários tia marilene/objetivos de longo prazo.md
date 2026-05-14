@@ -77,7 +77,7 @@ Decisão de cada um vai sendo registrada no log conforme passamos.
 |---|---|---|---|
 | Mecânicos | ~~#0~~, ~~#29~~, ~~#30~~, ~~#34~~ | ~~#0: parágrafos abstract~~ (rejeitado, 229 palavras OK); ~~#29: capitalização~~ (Good Leadership); ~~#30/#34: acentos PT~~ (aplicados em 3 listings + lstset com literate) | ✓ feito |
 | Figuras | ~~#56, #61, #62~~ | Caption antes do gráfico + "Source: created by the authors" | ✗ rejeitados (hierarquia: Springer/Motoki põe caption ABAIXO e não exige "Source") |
-| Citações/siglas | ~~#3~~, #4, ~~#24~~ | ~~#3 LLM~~ + ~~#24 i.i.d.~~ aplicados + 6 outras siglas expandidas (BERT, OLS, API, RLHF, EEOC, ML) via Explore-agent sweep; #4 (Obermeyer página) pendente | parcial: 8 expansões aplicadas, #4 pendente |
+| Citações/siglas | ~~#3~~, ~~#4~~, ~~#24~~ | ~~#3 LLM~~ + ~~#24 i.i.d.~~ + 6 outras siglas (BERT/OLS/API/RLHF/EEOC/ML); ~~#4 Obermeyer~~: citação corrigida para verbatim + página 447 | ✓ feito |
 | Substantivos | ~~#5~~, ~~#7~~, ~~#52~~, ~~#73~~ | ~~#5: Objetivos específicos~~ (feito, C2); ~~#7: RQ+cortar resultados~~ (rejeitado); ~~#52: "Analyses and Results"~~ (rejeitado — Motoki também usa só "Results"); ~~#73: mover resultados~~ (rejeitado, contingente em #7) | #5 ✓; #7/#52/#73 ✗ |
 | ~~Quali/quanti~~ | ~~#6, #23~~ | **REJEITADO** em 2026-05-11 — Otávio esclareceu que classificar pesquisa como quali/quanti é convenção de humanas, não comum em economia/Public Choice | rejeitado |
 | Domínio técnico | #42 | Nota de rodapé sobre `temperature` | pendente |
@@ -123,5 +123,6 @@ Guia: https://link.springer.com/journal/11127/submission-guidelines
 
 - Localizar o trecho exato do Motoki sobre econometria (frente B1) — Otávio sugeriu PDF p.4, mas conferir.
 - Quando decidir cada comentário substantivo (A), registrar a decisão e a justificativa neste documento (não só no log).
-- **Ritmo de trabalho**: em 5/7 Otávio sinalizou que queria implementar "o mais rápido possível". Hoje é 5/11 (~4 dias depois). Recombinar ritmo de retomada.
+- **Ritmo de trabalho**: em 5/7 Otávio sinalizou que queria implementar "o mais rápido possível". Snapshot histórico tirado em 11/05, edições aplicadas em 13/05. Recombinar ritmo de retomada.
 - **Princípios aplicáveis a próximos papers?** Otávio mencionou "papers, em geral, em inglês" (plural). Vale pensar se parte dos princípios deste plano vira convenção para os próximos artigos — depois, não agora.
+- **Auditoria de citações diretas** (descoberta em 13/05): o fix do #4 expôs que a "citação verbatim" do Obermeyer era paráfrase entre aspas. Outras citações entre aspas no paper podem ter o mesmo problema. Auditar antes da submissão.

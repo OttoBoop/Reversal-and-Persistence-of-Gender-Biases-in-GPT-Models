@@ -384,7 +384,56 @@ Otávio aprovou: aplicar Grupo 1, não tocar no Grupo 2.
 
 ### Pendente neste sub-bloco
 
-- **#4** (Obermeyer página em citação direta) — ainda preciso descobrir a página específica da citação no Science 366.
+- ~~**#4** (Obermeyer página em citação direta)~~ resolvido na entrada 14.
+
+---
+
+## 2026-05-13 (entrada 14) — #4 aplicado: citação Obermeyer corrigida para verbatim + página 447
+
+### Achado pré-fix
+
+Ao buscar a página, descobri que **a citação atual no paper não era verbatim**, apesar de estar entre aspas. Diferenças vs. abstract original do Science (Obermeyer et al. 2019, p. 447):
+
+| Paper atual | Original Science |
+|---|---|
+| "This bias arises" | "The bias arises" |
+| "health costs" | "health care costs" |
+| "and not illness" | "rather than illness" |
+| "unequal access to the health system" | "unequal access to care" |
+| "less money is spent on Black patients" | "we spend less money caring for Black patients than for White patients" |
+
+Cinco diferenças. A "citação" era paráfrase entre aspas — problema de integridade.
+
+Apresentei três opções ao Otávio (A: trocar pelo verbatim + página, B: tirar aspas e virar paráfrase indireta, C: híbrido com paráfrase + quote curto verbatim). Otávio escolheu **A**.
+
+### Edição aplicada
+
+Em [main_english.tex:113-114](../paper/latex/main_english.tex#L113):
+
+```diff
+-Regarding the origin..., \citeauthor{obermeyer2019} conclude:
+-``This bias arises because the algorithm predicts health costs and not illness, but unequal access to the health system means that less money is spent on Black patients''.
++Regarding the origin..., \citet[p.~447]{obermeyer2019} conclude:
++``The bias arises because the algorithm predicts health care costs rather than illness, but unequal access to care means that we spend less money caring for Black patients than for White patients''.
+```
+
+Mudanças:
+- `\citeauthor{obermeyer2019}` → `\citet[p.~447]{obermeyer2019}` (natbib produz "Obermeyer et al. (2019, p. 447)")
+- Quote substituída pela versão verbatim do abstract do Science 366:6464:447
+
+### Verificação
+
+- `latexmk -pdf -g`: OK (34 páginas, 1385788 bytes).
+- PDF página 3 lido — confirma rendering correto: "OBERMEYER et al. (2019, p. 447) conclude: 'The bias arises because the algorithm predicts health care costs rather than illness...'".
+
+### Status
+
+- **#4** ✓ aplicado.
+- **Bloco "Citações/siglas" CONCLUÍDO**: #3, #4, #24 fechados + 6 bônus.
+
+### Observação
+
+O fix da citação não foi só "adicionar página". Foi corrigir uma paráfrase-entre-aspas para verbatim. Esse tipo de erro pode ser comum no paper inteiro — vale a pena, num passo futuro, varrer outras citações diretas e verificar fidelidade. Não vou fazer agora, registro como pendência genérica.
 
 ---
 
