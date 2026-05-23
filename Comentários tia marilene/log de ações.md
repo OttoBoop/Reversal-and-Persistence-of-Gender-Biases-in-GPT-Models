@@ -708,4 +708,52 @@ Três TODOs no `main_english.tex` (linhas ~125 e ~185) sobre atribuição Lucy &
 
 ---
 
+## 2026-05-14 (entrada 21) — Frente 3 (Makefile) + Frente 4 (Springer pendings) + Frente 5 (Motoki localization)
+
+### Frente 3 — Makefile criado
+
+`Makefile` na raiz com targets: `english`, `appendix`, `all`, `clean`, `distclean`, `help`. Cada build compila `paper/latex/<source>.tex` e copia o `.pdf` resultante para a raiz com o nome padrão `paper_<algo>_english.pdf`. Evita o drift de PDF na raiz vs. fonte (problema que detectamos no dia 14 às 9h).
+
+`make all` testado, funciona. Detectou (warnings pré-existentes, não causados pelos meus edits) 5 citações não resolvidas no `appendix.tex` standalone: `heymann2020`, `bai2024`, `obermeyer2019`, `wang2024`. **Não corrigido** — o appendix.tex não tem `\bibliography` setup; é uma feature pre-existente que ele compila standalone só com warnings. Para resolver, precisaria de `\bibliography{../latex/referencias}` ou similar. Otávio decide se vale a pena.
+
+### Frente 4 — Springer C-section TODOs fechados
+
+Re-pesquisei via WebSearch + WebFetch (paywall do guia oficial Springer não impede de obter sub-páginas do support.springernature.com nem de páginas de outros journals Springer que repetem as regras gerais).
+
+| Item | Verificação | Status |
+|---|---|---|
+| Word limit | Springer não impõe default; é por journal. Public Choice não especifica máximo. | OK |
+| Keywords | Public Choice exige **4 a 6** keywords. Paper tem 5 (Bias in AI, gender bias, LLMs, NLP, algorithmic fairness). | OK |
+| Caption figuras | Springer: **abaixo** da figura. Paper já segue (`\caption{...}` depois de `\includegraphics`). | OK |
+| Caption tabelas | Springer: **acima** da tabela. Paper já segue (`\caption{...}` antes do `\begin{tabular}`, verificado nas 4 tabelas principais l.339/623/912/999). | OK |
+| Estrutura seções | Springer não fixa. Motoki é o template. Nossa estrutura bate (Intro / Literature Review / Methodology / Results / Conclusion). | OK |
+
+Plano `objetivos de longo prazo.md` atualizado seção C: pontos a confirmar agora têm ✅.
+
+### Frente 5 — Motoki localization
+
+Otávio no WhatsApp disse: "Página 722 do journal, mas nesse PDF está na página 4". Reli **PDF p.4** do Motoki (= journal p.4) explicitamente. Conteúdo:
+
+- JEL Classification (topo)
+- §1 Introduction (continua da p.3)
+- Descreve o empirical design em prosa direta: "In this paper, we propose a novel empirical design to infer whether AI algorithms like ChatGPT are subject to biases... In a nutshell, we ask ChatGPT to answer ideological questions by proposing that, while responding to the questions, it impersonates someone from a given side of the political spectrum..."
+- Menciona dose-response test, placebo test, profession-politics alignment
+- Início da discussão de randomness
+
+**Não é onde estão as equações ou a discussão econométrica detalhada do Motoki** — isso está em §4.2 Main results (PDF p.13-14), onde eles desenvolvem a Equation (1) e explicam interpretação dos coeficientes.
+
+A referência "página 722 do journal" não bate com Public Choice 198:3-23. Provável memória imprecisa do Otávio. Mas o conteúdo está, ainda assim, no Motoki — em DOIS lugares: PDF p.4 (estilo de intro do método) e §4.2 (interpretação de coeficientes).
+
+**Nossa B1 (entrada de 14/05) cobre os dois ângulos:**
+- Parágrafo 1 (motivação OLS + confounders) ≈ Motoki §1 (PDF p.4)
+- Parágrafo 2 (interpretação direta dos coeficientes, "$\beta_1 = -0.61$ → 61 pp de queda") ≈ Motoki §4.2 (PDF p.13)
+
+### Status conjunto
+
+- Frente 3 (Makefile) ✓
+- Frente 4 (Springer) ✓
+- Frente 5 (Motoki) ✓
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)

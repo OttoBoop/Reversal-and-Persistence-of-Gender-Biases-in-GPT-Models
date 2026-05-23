@@ -101,12 +101,12 @@ Guia: https://link.springer.com/journal/11127/submission-guidelines
 - **Abreviações**: definir na primeira menção, usar consistentemente depois (vale para todo o texto e dentro do caption de figuras).
 - **Figuras**: sequência **Figure Number → Figure Title → Figure Caption**. Material previamente publicado → referenciar no final do caption. **Para figuras criadas pelos autores, o Springer NÃO exige nota "Source: ..."** — isso é convenção brasileira (ABNT). → **Conflito com sugestões #56/#61/#62 da tia.**
 
-**Pontos ainda a confirmar no guia**:
+**Pontos a confirmar no guia (FECHADOS em 2026-05-14)**:
 
-- Posição do caption (acima vs. abaixo do gráfico) — a tia disse "acima" (#56). Confirmar se Springer fixa ou aceita os dois.
-- Estrutura de seções esperada (Introdução / Related literature / Empirical strategy / Results / Discussion / Conclusion?). Motoki segue essa.
-- Limite de palavras do paper inteiro.
-- Lista e número de palavras-chave.
+- ✅ **Posição do caption**: Springer exige caption **abaixo** das figuras e **acima** das tabelas. Nosso paper já segue ambos (verificado).
+- ✅ **Estrutura de seções esperada**: Springer não fixa; Motoki é o template prático e a nossa estrutura bate (Introduction / Literature Review / Methodology / Results / Conclusion).
+- ✅ **Limite de palavras do paper inteiro**: Springer não impõe default ("We do not have restraints on the size of manuscripts submitted to most of our Springer Nature journals"). Nosso paper tem 34 páginas (sem preocupação).
+- ✅ **Lista e número de palavras-chave**: Public Choice exige 4 a 6 keywords. Nosso paper tem 5 (Bias in AI, gender bias, LLMs, NLP, algorithmic fairness). Dentro do range.
 
 ### D. Fora de escopo desta revisão
 
