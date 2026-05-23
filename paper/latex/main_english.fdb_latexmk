@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main_english"] 1778744825.65506 "main_english.aux" "main_english.bbl" "main_english" 1778744828.42992 0
+["bibtex main_english"] 1779547742.932 "main_english.aux" "main_english.bbl" "main_english" 1779547745.58781 0
   "./referencias.bib" 1775480503.81695 11749 da368b547959b5caf744c4aa9a71cbe0 ""
   "/usr/share/texmf-dist/bibtex/bst/base/apalike.bst" 1775415801 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "main_english.aux" 1778744828.28391 15482 08c947574b11c158137fc31113c3c08a "pdflatex"
+  "main_english.aux" 1779547745.42306 15482 08c947574b11c158137fc31113c3c08a "pdflatex"
   (generated)
   "main_english.bbl"
   "main_english.blg"
   (rewritten before read)
-["pdflatex"] 1778744825.6752 "main_english.tex" "main_english.pdf" "main_english" 1778744828.43015 0
+["pdflatex"] 1779547742.95098 "main_english.tex" "main_english.pdf" "main_english" 1779547745.58799 0
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1775415801 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1775415801 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbi1200.tfm" 1775415801 3072 ccae1a240ab272417e4399fe942df546 ""
@@ -159,11 +159,11 @@
   "figuras_final/image7.png" 1775480503.81535 86803 26a14864ba7c877640f65950fb4cbe07 ""
   "figuras_final/image8.png" 1775480503.81656 88922 b1fe7aaab3fe250bb547d1195aa4ca28 ""
   "figuras_final/image9.png" 1775480503.81695 92238 77ad7074f7edd85a64cf591f19150bb5 ""
-  "main_english.aux" 1778744828.28391 15482 08c947574b11c158137fc31113c3c08a "pdflatex"
-  "main_english.bbl" 1778744825.67091 5394 dd7375c826d692041bf18a9f4ff7864b "bibtex main_english"
-  "main_english.out" 1778744828.28591 7622 1f6b4a94c3f6b470425fdcd62f4dd252 "pdflatex"
-  "main_english.tex" 1778744814.58227 63476 81063b85f0d0581e885be0700ba8f72d ""
-  "main_english.toc" 1778744828.28591 3787 96fd15bbed9515cade3df278b8e26092 "pdflatex"
+  "main_english.aux" 1779547745.42306 15482 08c947574b11c158137fc31113c3c08a "pdflatex"
+  "main_english.bbl" 1779547742.94906 5394 dd7375c826d692041bf18a9f4ff7864b "bibtex main_english"
+  "main_english.out" 1779547745.42506 7622 1f6b4a94c3f6b470425fdcd62f4dd252 "pdflatex"
+  "main_english.tex" 1779547734.75006 64382 5549151fa8fb93b724d02cd4d13c8fa0 ""
+  "main_english.toc" 1779547745.42506 3787 96fd15bbed9515cade3df278b8e26092 "pdflatex"
   (generated)
   "main_english.aux"
   "main_english.log"

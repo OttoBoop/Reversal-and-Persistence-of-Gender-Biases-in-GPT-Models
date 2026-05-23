@@ -122,6 +122,7 @@ COMPAS algorithm, used to predict the risk of criminal recidivism in the United 
 The cited studies conclude that the biases found were learned through the data used to train the algorithms: the models learn and replicate human biases. A particular concern emerges from the fact that these models can infer demographic characteristics
 --- such as gender, ethnicity and age --- from seemingly neutral information, such as names, writing patterns or vocabulary choices \citep{bai2024}. This means that omitting explicit demographic information may be insufficient to eliminate algorithmic discrimination.
 
+% TODO (audit-2026-05-14): The phrase ``different levels of power'' below is presented as a Lucy & Bamman (2021) concept, but they use ``high power verbs'' + Fast et al. (2016b) lexicons for ``strong/dominant'' vs ``weak/dependent/submissive/afraid'', not the phrase ``different levels of power''. Same issue at line ~140 with ``lower-power'' professions. See log entry 20. Decide whether to soften the attribution or rewrite.
 The present study investigates the evolution of gender bias in OpenAI models, spanning models from the GPT-3 (2020), GPT-4 (2023) and
 GPT-5 (2025) families. We use a methodology based on generating narratives about characters in the workplace, using three tests in which we ask the model to generate a story --- modifying specific characteristics --- and then analyzing the gender of the generated characters. More precisely, we pursue three empirical aims: to measure how desirable workplace characteristics, the valence of supervisor feedback, and occupational power-level cues each shape the gender of model-generated characters. We also examine two cross-cutting axes: the evolution of bias across three model generations (GPT-3, GPT-4, GPT-5) and, for the first two experiments, the role of language (English vs.\ Portuguese). The first test consists of asking the model to generate a story about a character with a desirable characteristic in the labor market, and the prompt is modified so that the model generates a story in which the character has that characteristic, or lacks it. The second test asks the model to generate a story in which a character is called in to receive feedback from their boss, with the prompt modifying whether the feedback is positive or negative. The last test asks for a story to be generated with a character in different professions, including professions stereotypically associated with a gender, or known for ``different levels of power'' --- a concept defined in
 \citet{lucy2021} --- such as university professors and primary school teachers. The first two experiments were conducted in English and Portuguese, allowing us to examine how language influences bias patterns.
@@ -182,7 +183,9 @@ extracted from 402 fiction books. The thematic analysis
 revealed significant differences: female characters were more
 frequently described in contexts of family, emotions, and physical
 appearance; while male characters appeared in narratives about
-politics, war, sports, and crime. Thus, Lucy defines that male characters
+politics, war, sports, and crime.
+% TODO (audit-2026-05-14): Lucy & Bamman (2021) do NOT use the capitalized labels "High Power"/"Low Power" as character settings. They use "high power verbs" and lexicons from Fast et al. (2016b) for "strong/dominant" vs "weak/dependent/submissive/afraid". The following sentence misattributes our category labels to Lucy. Decide: (A) reword to accurately describe Lucy's lexicons; (B) remove quotes and treat as our own category names; (C) attribute Fast et al. (2016b) for the lexicons.
+Thus, Lucy defines that male characters
 were associated with professions and ``High Power'' settings, and
 female characters, with ``Low Power'' settings.
 
@@ -216,8 +219,8 @@ human raters rank model outputs to guide its
 refinement.
 
 These techniques, however, can end up creating biases in the opposite direction: an
-anti-Muslim bias becomes pro-Muslim, for example. \citet{liu2025} directly address the risk of overcorrection in their framework
-``Bias Unlearn'' --- proposing an ``unlearning'' method that removes
+anti-Muslim bias becomes pro-Muslim, for example. \citet{liu2025} directly address the risk of overcorrection in their
+\textit{BiasUnlearn} framework --- an unlearning method that removes
 stereotyped associations while avoiding creating the inverse bias.
 
 \citet{wang2024} show that models considered less biased

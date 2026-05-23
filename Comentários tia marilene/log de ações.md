@@ -644,4 +644,68 @@ cp paper/latex/appendix.pdf paper_appendix_english.pdf
 
 ---
 
+## 2026-05-14 (entrada 20) — Auditoria de citações diretas (frente 1 do plano radiant-pillow)
+
+Modo autônomo aprovado pelo Otávio. Sweep de citações diretas no `main_english.tex` + `appendix.tex` em busca de paráfrases-entre-aspas atribuídas a fontes, no mesmo padrão do erro Obermeyer (#4).
+
+### Encontradas e resolvidas
+
+**1. Liu et al. (2025) — "Bias Unlearn" → "BiasUnlearn"** [main_english.tex:220]
+
+Verifiquei via arxiv.org/html/2509.25673 (Liu, "Mitigating Biases in Language Models via Bias Unlearning", EMNLP 2025). O framework chama-se **BiasUnlearn** (uma palavra). Nosso paper escrevia "Bias Unlearn" (duas palavras) entre aspas, e também colocava "unlearning" entre aspas como se fosse termo específico do paper — mas é apenas o nome do método.
+
+Aplicado: removi as aspas, troquei spelling para `\textit{BiasUnlearn}` (itálico como nome de framework). "unlearning" virou prosa comum.
+
+```diff
+-\citet{liu2025} directly address the risk of overcorrection in their framework
+-``Bias Unlearn'' --- proposing an ``unlearning'' method that removes
++\citet{liu2025} directly address the risk of overcorrection in their
++\textit{BiasUnlearn} framework --- an unlearning method that removes
+```
+
+**Risco**: baixo. Spelling/typo do nome do framework + remoção de aspas inadequadas.
+
+### Encontradas e marcadas como TODO (decisão de prosa não-trivial)
+
+**2. Lucy & Bamman (2021) — "High Power" / "Low Power" como labels** [main_english.tex:185-187]
+
+Li o PDF completo (5 páginas, aclanthology.org/2021.nuse-1.5.pdf). Lucy & Bamman usam:
+- "high power verbs" (sobre verbos)
+- Lexicons de Fast et al. (2016b) para "strong/dominant" vs "weak/dependent/submissive/afraid"
+- Caracteres descritos como "more powerful" / "less powerful"
+
+NÃO usam: "High Power" / "Low Power" como labels capitalizados de settings/professions/characters. Nosso paper inventou esses labels e os atribui textualmente a Lucy.
+
+**Não apliquei correção** — exigiria rewriting de prosa substantiva. Em vez disso, adicionei `% TODO (audit-2026-05-14): ...` no `.tex` com 3 opções para o Otávio decidir:
+- (A) reescrever pra refletir os lexicons que Lucy realmente usa
+- (B) tirar aspas e tratar como nossos labels de categoria
+- (C) atribuir Fast et al. (2016b) pelos lexicons
+
+**3. Lucy & Bamman (2021) — "different levels of power"** [main_english.tex:126]
+
+Mesmo padrão. Lucy não usa essa frase verbatim. Adicionei TODO acima do parágrafo do intro.
+
+**4. Lucy & Bamman (2021) — "lower-power" professions** [main_english.tex:140]
+
+Mesmo problema. Referenciado dentro do TODO de #3.
+
+### Verificação
+
+- Compile OK: `latexmk -pdf -g`, 34 páginas, 1396638 bytes. Zero erros, zero warnings sobre citações.
+- TODOs em formato `% TODO (audit-2026-05-14): ...` para fácil grep depois.
+
+### Pendência registrada para Otávio
+
+Três TODOs no `main_english.tex` (linhas ~125 e ~185) sobre atribuição Lucy & Bamman. Decisão de prosa, não mecânica.
+
+### Outras citações verificadas e OK
+
+- Tay (Wolf 2017), Amazon (Dastin 2018), COMPAS (Angwin 2016) — citações indiretas sem paráfrase entre aspas. OK.
+- Bertrand & Mullainathan (2004) — citação indireta. OK.
+- "office worker", "Poor Leadership", "Good Leadership" — labels do próprio paper. OK.
+- Tan & Celis (2019), Abid et al. (2021), Joshi (2024), Karvonen (2025), Mirza (2024), Wang (2024) — citações indiretas. OK.
+- Obermeyer (2019) — já corrigida em entrada 14.
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)
