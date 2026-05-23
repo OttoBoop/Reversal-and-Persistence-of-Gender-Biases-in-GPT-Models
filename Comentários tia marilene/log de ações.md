@@ -756,4 +756,51 @@ A referência "página 722 do journal" não bate com Public Choice 198:3-23. Pro
 
 ---
 
+## 2026-05-14 (entrada 22) — Frente 2 (diff visual) + Frente 6 (sweep final) — fim do trabalho autônomo
+
+### Frente 2 — Diff visual
+
+Criado [diff_visual_paper_11maio_vs_14maio.md](diff_visual_paper_11maio_vs_14maio.md) com 13 seções comparando o snapshot 11/05 vs. a versão atual:
+
+1. Intro § 1 — expansão LLM
+2. Intro § 2 — Obermeyer verbatim + p.447
+3. Intro § 3 — C2 (3 aims + 2 eixos)
+4. Lit Review — BERT
+5. Lit Review — RLHF
+6. Lit Review — Liu BiasUnlearn (audit fix)
+7. Methodology §3.1 — i.i.d.
+8. Methodology §3.2 — Good Leadership
+9. Methodology — Prompts PT com acentos
+10. Methodology §3.5 — API + footnote temperature
+11. Methodology §3.6 — B1 (2 parágrafos novos)
+12. Apêndice — EEOC + ML
+13. B4 visual — listings compactos
+
+Inclui ponteiros aos dois PDFs (snapshot vs atual) para inspeção visual, e listagem explícita dos TODOs que ficaram para o Otávio.
+
+### Frente 6 — Sweep final
+
+- `make all`: ambos os builds passam. PDFs frescos copiados pra raiz.
+- `main_english.tex`: compile clean, zero warnings de LaTeX substantivos (só uma menção interna do hyperref a `Hfootnote.1`, conhecido e inócuo).
+- `appendix.tex`: compila com 5 warnings de citações undefined (`heymann2020`, `bai2024`, `obermeyer2019`, `wang2024` × 2). **Pré-existente** — apêndice não tem `\bibliography{...}` setup standalone. Não causado pelas edições desta sessão.
+- `grep -n "TODO" paper/latex/*.tex` mostra exatamente os 2 TODOs deixados intencionalmente (Lucy attribution).
+- Refs internas resolvidas: `\ref{sec:generation-parameters}` (footnote temperature) e `\ref{sec:econometric-specification}` (label adicionado em B1) ambos ok.
+
+### Pendência pré-existente flagada
+
+O `appendix.tex` standalone tem 5 citações undefined. Não fiz fix porque exigiria decidir o setup (incluir `\bibliography{../latex/referencias}` no appendix.tex, OU integrar appendix como `\input` no main, OU mudar fluxo). Otávio decide.
+
+### Resumo da rodada autônoma (frentes 1 a 6 do plano radiant-pillow)
+
+- **Frente 1 (Citation audit)**: 1 fix mecânico (Liu BiasUnlearn), 2 TODOs registrados (Lucy attribution).
+- **Frente 2 (Diff visual)**: markdown entregue pra revisão manual.
+- **Frente 3 (Makefile)**: build automatizado criado.
+- **Frente 4 (Springer)**: 5 itens C-section fechados.
+- **Frente 5 (Motoki)**: localização registrada; "página 722" do Otávio era memória imprecisa.
+- **Frente 6 (Sweep final)**: compile clean, refs resolvidas.
+
+Total nesta rodada autônoma: **5 commits**, ~150 linhas modificadas no `.tex` + Makefile + markdown novo. Tudo pushed em `origin` e `paper-repo`.
+
+---
+
 (Próximas entradas vão abaixo conforme aplicarmos ações.)
