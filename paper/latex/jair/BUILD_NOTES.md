@@ -20,6 +20,15 @@ analyses computed from the existing data**. Rationale/norms: see
   - **Table captions moved below** the tables (6 tables); figure captions were already below.
   - Section labels added so cross-references resolve.
   - **Declarations** block added (CC BY notice, AI-use, COI, funding, data/code).
+- **Appendix merged (single self-contained file):** `../appendix.tex` is folded into
+  `main_jair.tex` as lettered appendices — **Appendix A: Definition of Bias** (the formal bias
+  construct) and **Appendix B: Full Regressions** (the 20+ per-model regression tables). The
+  standalone `\maketitle`/wrapper section was dropped, headings promoted, the `heymann2020`
+  citation key corrected to `heymann2021` (the key present in the bib), and cross-references
+  added from the Framework section (`\ref{app:bias}`, `\ref{app:fullreg}`). The appendix
+  regression tables use bold run-in headers rather than `\caption{}`, so the
+  "captions below" rule is not triggered there (optional polish: convert them to captioned
+  tables). The canonical `../appendix.tex` is unchanged.
 
 ## New analyses (computed from the data — flagged for advisor validation)
 `analysis/measurement_validity.py` (re-runnable, offline) → `analysis/measurement_validity.md`:
@@ -39,8 +48,8 @@ here directly. We therefore verify with a **local fallback build**:
 
 - `analysis/build_local.py` regenerates `_localcheck.tex` by swapping the JAIR preamble for
   `article`+`natbib`+`apalike` and down-converting the theapa cite commands, then:
-  - `latexmk -pdf -bibtex -cd _localcheck.tex` → **`main_jair_localcheck.pdf` (36 pages),
-    0 undefined citations, 0 undefined references, no errors.**
+  - `latexmk -pdf -bibtex -cd _localcheck.tex` → **`main_jair_localcheck.pdf` (52 pages,
+    incl. merged Appendices A–B), 0 undefined citations, 0 undefined references, no errors.**
 - The canonical `../main_english.tex` also compiles here (34 pages) — toolchain sanity check.
 
 **Reproduce the local PDF:**
@@ -60,8 +69,9 @@ cp _localcheck.pdf main_jair_localcheck.pdf
 ## Remaining TODOs before submission
 - Advisor (Valdemar) validation of the **Framework**, **Discussion**, and **validity analyses**.
 - Fill the `[TODO]` placeholders in the Declarations (year, funding, data DOI, AI-use wording).
-- Route the heavy appendix (`../appendix.tex`: 20+ regressions, 5 profession cross-tabs) into
-  **JAIR online appendices** (it is intentionally *not* inlined here — keeps the main lean).
+- The analytic appendix is now **merged in-paper** (Appendix A/B); the **raw data, code, and
+  notebook** still go to **JAIR online appendices** (the data-availability statement points
+  there). Optional polish: convert the appendix regression blocks to `\caption{}`-ed tables.
 - Confirm the `UNCONFIRMED` JAIR guideline points listed in `.../adaptations/jair.md`
   (abstract word limit, keyword count, etc.).
 - Candor: JAIR has ~no precedent for this audit genre even after reframing — see the dossier's
