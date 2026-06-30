@@ -22,6 +22,7 @@ candidate journals. Each dossier studies the journal's **author guidelines (styl
 | [`04_journal_of_business_ethics.md`](04_journal_of_business_ethics.md) | **Journal of Business Ethics** (Springer) |
 | [`05_comparison_matrix_and_recommendation.md`](05_comparison_matrix_and_recommendation.md) | **Cross-journal matrix + overall fit ranking** |
 | [`06_why_choose_each_journal.md`](06_why_choose_each_journal.md) | **Referenced "why choose each journal" decision guide — affirmative case per venue with precedent papers (links) + norms (source links)** |
+| [`adaptations/`](adaptations/) | **Ready-to-paste manuscript adaptation packages — one per journal** (compliant abstract, new sections, declarations, template/citation conversion, apply-checklist) |
 
 ## How to read
 
