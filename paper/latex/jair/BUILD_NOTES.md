@@ -19,6 +19,9 @@ analyses computed from the existing data**. Rationale/norms: see
     `geometry`/`setspace` disabled (the class controls layout); `\graphicspath{{../figuras_final/}}`.
   - **Table captions moved below** the tables (6 tables); figure captions were already below.
   - Section labels added so cross-references resolve.
+  - **JAIR heading conventions applied** (per the reports): section/subsection titles
+    title-cased; a lead sentence added to every section so none opens with a subsection;
+    "Figure N"/"Table N"/"Section N"/"Appendix N" cross-references capitalized.
   - **Declarations** block added (CC BY notice, AI-use, COI, funding, data/code).
 - **Appendix merged (single self-contained file):** `../appendix.tex` is folded into
   `main_jair.tex` as lettered appendices — **Appendix A: Definition of Bias** (the formal bias
